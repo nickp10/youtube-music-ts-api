@@ -1,0 +1,45 @@
+{
+  "name": "youtube-music-ts-api",
+  "version": "1.0.0",
+  "description": "An unofficial YouTube Music API written in TypeScript for easy integration into your projects",
+  "main": "build/exports.js",
+  "types": "index.d.ts",
+  "files": [
+    "build/",
+    "index.d.ts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickp10/youtube-music-ts-api.git"
+  },
+  "author": "nickp10@hotmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nickp10/youtube-music-ts-api/issues"
+  },
+  "homepage": "https://github.com/nickp10/youtube-music-ts-api#readme",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "build-debug": "webpack --config webpack.dev.js",
+    "prepare": "npm run build",
+    "test": "mocha -r ts-node/register -r source-map-support/register src/**/*.spec.ts",
+    "test-coverage": "nyc npm run test"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.9",
+    "babel-loader": "^8.1.0",
+    "dts-bundle-webpack": "^1.0.2",
+    "mocha": "^7.2.0",
+    "nyc": "^15.1.0",
+    "source-map-support": "^0.5.19",
+    "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-merge": "^4.2.2"
+  }
+}

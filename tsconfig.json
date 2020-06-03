@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "declarationDir": "./build-dts",
+        "module": "commonjs",
+        "newLine": "LF",
+        "removeComments": true,
+        "sourceMap": true,
+        "target": "es6"
+    },
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "src/**/*.d.ts",
+      "src/**/*.spec.ts"
+    ]
+}

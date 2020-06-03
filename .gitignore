@@ -1,0 +1,7 @@
+.nyc_output/
+.vscode/
+build/
+build-dts/
+debug/
+coverage/
+node_modules/
