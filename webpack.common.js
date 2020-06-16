@@ -4,6 +4,7 @@ const webpack = require("webpack");
 
 module.exports = {
     entry: {
+        cli: path.resolve(__dirname, "./src/cli.ts"),
         exports: path.resolve(__dirname, "./src/exports.ts")
     },
     externals: [
@@ -43,6 +44,10 @@ module.exports = {
         extensions: [".js", ".ts"]
     },
     plugins: [
+        new webpack.BannerPlugin({
+            banner: "#! /usr/bin/env node",
+            raw: true
+        }),
         new DtsBundleWebpack({
             baseDir: "build-dts",
             main: "build-dts/exports.d.ts",
