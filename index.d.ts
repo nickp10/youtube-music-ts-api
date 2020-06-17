@@ -22,6 +22,33 @@ declare module 'youtube-music-ts-api/interfaces' {
     export interface IIncomingMessage extends http.IncomingMessage {
         body?: string;
     }
+    export interface IAlbumSummary {
+        id?: string;
+        name?: string;
+    }
+    export interface IArtistSummary {
+        id?: string;
+        name?: string;
+    }
+    export interface IPlaylistDetail {
+        id?: string;
+        name?: string;
+        description?: string;
+        count?: number;
+        tracks?: ITrackDetail[];
+    }
+    export interface IPlaylistSummary {
+        id?: string;
+        name?: string;
+        count?: number;
+    }
+    export interface ITrackDetail {
+        id?: string;
+        title?: string;
+        artists?: IArtistSummary[];
+        album?: IAlbumSummary;
+        duration?: string;
+    }
 }
 
 declare module 'youtube-music-ts-api/service/youtube-music-guest' {
@@ -34,7 +61,8 @@ declare module 'youtube-music-ts-api/service/youtube-music-guest' {
         queryString: string;
         origin: string;
         generateHeaders(): http.OutgoingHttpHeaders;
-        sendRequest(path: string, data?: string): Promise<IIncomingMessage>;
+        traverse(obj: any, ...path: string[]): any;
+        sendRequest(path: string, data?: any): Promise<any>;
         sendHttpsRequest(request: https.RequestOptions, data?: string): Promise<IIncomingMessage>;
     }
 }
@@ -42,10 +70,12 @@ declare module 'youtube-music-ts-api/service/youtube-music-guest' {
 declare module 'youtube-music-ts-api/service/youtube-music-authenticated' {
     import * as http from "http";
     import YouTubeMusicGuest from "youtube-music-ts-api/service/youtube-music-guest";
+    import { IPlaylistDetail, IPlaylistSummary } from "youtube-music-ts-api/interfaces";
     export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest {
         constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string);
         generateHeaders(): http.OutgoingHttpHeaders;
-        browse(): Promise<string>;
+        getLibraryPlaylists(): Promise<IPlaylistSummary[]>;
+        getPlaylist(id: string): Promise<IPlaylistDetail>;
     }
 }
 

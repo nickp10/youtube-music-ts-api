@@ -1,6 +1,8 @@
 import * as http from "http";
 import sha1 = require("sha1");
 import YouTubeMusicGuest from "./youtube-music-guest";
+import { getLibraryPlaylists, getPlaylist } from "./playlists";
+import { IPlaylistDetail, IPlaylistSummary } from "../interfaces";
 
 export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest {
     private hsid: string;
@@ -37,50 +39,11 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest {
         return `HSID=${this.hsid}; SSID=${this.ssid}; APISID=${this.apisid}; SAPISID=${this.sapisid}; __Secure-3PSID=${this.secure3psid}`;
     }
 
-    async browse(): Promise<string> {
-        const response = await this.sendRequest("browse", JSON.stringify({
-            "browseId": "FEmusic_liked_playlists",
-            "context": {
-                "capabilities": {},
-                "client": {
-                  "clientName": "WEB_REMIX",
-                  "clientVersion": "0.1",
-                  "experimentIds": [],
-                  "experimentsToken": "",
-                  "gl": "DE",
-                  "hl": "en",
-                  "locationInfo": {
-                    "locationPermissionAuthorizationStatus": "LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED"
-                  },
-                  "musicAppInfo": {
-                    "musicActivityMasterSwitch": "MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE",
-                    "musicLocationMasterSwitch": "MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE",
-                    "pwaInstallabilityStatus": "PWA_INSTALLABILITY_STATUS_UNKNOWN"
-                  },
-                  "utcOffsetMinutes": 60
-                },
-                "request": {
-                  "internalExperimentFlags": [
-                    {
-                      "key": "force_music_enable_outertube_tastebuilder_browse",
-                      "value": "true"
-                    },
-                    {
-                      "key": "force_music_enable_outertube_playlist_detail_browse",
-                      "value": "true"
-                    },
-                    {
-                      "key": "force_music_enable_outertube_search_suggestions",
-                      "value": "true"
-                    }
-                  ],
-                  "sessionIndex": {}
-                },
-                "user": {
-                  "enableSafetyMode": false
-                }
-              }
-        }));
-        return response.body;
+    async getLibraryPlaylists(): Promise<IPlaylistSummary[]> {
+        return await getLibraryPlaylists(this);
+    }
+
+    async getPlaylist(id: string): Promise<IPlaylistDetail> {
+        return await getPlaylist(this, id);
     }
 }

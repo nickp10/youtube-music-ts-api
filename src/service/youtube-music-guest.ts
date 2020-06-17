@@ -1,6 +1,7 @@
 import * as http from "http";
 import * as https from "https";
 import { IIncomingMessage } from "../interfaces";
+import YouTubeMusicContext from "../context";
 
 export default class YouTubeMusicGuest {
     hostname: string = "music.youtube.com";
@@ -14,13 +15,38 @@ export default class YouTubeMusicGuest {
         };
     }
 
-    async sendRequest(path: string, data?: string): Promise<IIncomingMessage> {
-        return await this.sendHttpsRequest({
+    traverse(obj: any, ...path: string[]): any {
+        if (obj) {
+            if (Array.isArray(path) && path.length > 0)  {
+                return this.traverse(obj[path[0]], ...path.slice(1));
+            }
+            return obj;
+        }
+        return undefined;
+    }
+
+    async sendRequest(path: string, data?: any): Promise<any> {
+        let dataStr: string = undefined;
+        if (data) {
+            data = {
+                ...YouTubeMusicContext,
+                ...data
+            };
+            dataStr = JSON.stringify(data);
+        }
+        const response = await this.sendHttpsRequest({
             hostname: this.hostname,
             path: `${this.basePath}${path}${this.queryString}`,
             method: "POST",
             headers: this.generateHeaders()
-        }, data);
+        }, dataStr);
+        if (response.statusCode === 200 && response.body) {
+            const body = JSON.parse(response.body);
+            if (body) {
+                return body;
+            }
+        }
+        throw new Error(`Could not send the specified request to ${path}. Status code: ${response.statusCode}`);
     }
 
     async sendHttpsRequest(request: https.RequestOptions, data?: string): Promise<IIncomingMessage> {
