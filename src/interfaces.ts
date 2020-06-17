@@ -19,6 +19,7 @@ export interface IPlaylistDetail {
     name?: string;
     description?: string;
     count?: number;
+    privacy?: string;
     tracks?: ITrackDetail[];
 }
 

@@ -35,6 +35,7 @@ declare module 'youtube-music-ts-api/interfaces' {
         name?: string;
         description?: string;
         count?: number;
+        privacy?: string;
         tracks?: ITrackDetail[];
     }
     export interface IPlaylistSummary {
@@ -61,7 +62,6 @@ declare module 'youtube-music-ts-api/service/youtube-music-guest' {
         queryString: string;
         origin: string;
         generateHeaders(): http.OutgoingHttpHeaders;
-        traverse(obj: any, ...path: string[]): any;
         sendRequest(path: string, data?: any): Promise<any>;
         sendHttpsRequest(request: https.RequestOptions, data?: string): Promise<IIncomingMessage>;
     }
