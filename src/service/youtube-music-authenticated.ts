@@ -2,9 +2,9 @@ import * as http from "http";
 import sha1 = require("sha1");
 import YouTubeMusicGuest from "./youtube-music-guest";
 import PlaylistParser from "../parsers/playlist-parser";
-import { IPlaylistDetail, IPlaylistSummary } from "../interfaces";
+import { IPlaylistDetail, IPlaylistSummary, IYouTubeMusicAuthenticated} from "../interfaces";
 
-export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest {
+export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest implements IYouTubeMusicAuthenticated {
     private hsid: string;
     private ssid: string;
     private apisid: string;
@@ -22,7 +22,7 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest {
         this.playlistParser = new PlaylistParser();
     }
 
-    generateHeaders(): http.OutgoingHttpHeaders {
+    protected generateHeaders(): http.OutgoingHttpHeaders {
         return {
             ...super.generateHeaders(),
             "Authorization": this.generateAuthorization(),

@@ -1,21 +1,22 @@
 import * as http from "http";
 import * as https from "https";
-import { IIncomingMessage } from "../interfaces";
+import { IYouTubeMusicGuest } from "../interfaces";
+import { IIncomingMessage } from "../interfaces-internal";
 import YouTubeMusicContext from "../context";
 
-export default class YouTubeMusicGuest {
+export default class YouTubeMusicGuest implements IYouTubeMusicGuest {
     hostname: string = "music.youtube.com";
     basePath: string = "/youtubei/v1/";
     queryString: string = "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
     origin: string = "https://music.youtube.com";
 
-    generateHeaders(): http.OutgoingHttpHeaders {
+    protected generateHeaders(): http.OutgoingHttpHeaders {
         return {
             "X-Origin": this.origin
         };
     }
 
-    async sendRequest(path: string, data?: any): Promise<any> {
+    protected async sendRequest(path: string, data?: any): Promise<any> {
         let dataStr: string = undefined;
         if (data) {
             data = {
@@ -39,7 +40,7 @@ export default class YouTubeMusicGuest {
         throw new Error(`Could not send the specified request to ${path}. Status code: ${response.statusCode}`);
     }
 
-    async sendHttpsRequest(request: https.RequestOptions, data?: string): Promise<IIncomingMessage> {
+    protected async sendHttpsRequest(request: https.RequestOptions, data?: string): Promise<IIncomingMessage> {
         return new Promise<IIncomingMessage>((resolve, reject) => {
             const headers = request.headers || { };
             request.headers = headers;

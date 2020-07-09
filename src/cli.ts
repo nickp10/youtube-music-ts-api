@@ -5,11 +5,20 @@ import YouTubeMusic from "./service/youtube-music";
 * This allows the library to be tested in a sandbox environment during development.
 */
 async function main(): Promise<void> {
-    const ytma = await YouTubeMusic.authenticate("");
+    const cookieStr = "";
+    const ytm = new YouTubeMusic();
+    const ytma = await ytm.authenticate(cookieStr);
     const playlists = await ytma.getLibraryPlaylists();
-    if (playlists && playlists.length > 0) {
-        const playlist = await ytma.getPlaylist(playlists[0].id);
-        console.log(JSON.stringify(playlist));
+    if (playlists) {
+        for (const playlist of playlists) {
+            console.log("Playlist: " + playlist.name);
+            const playlistDetail = await ytma.getPlaylist(playlist.id);
+            if (playlistDetail) {
+                for (const track of playlistDetail.tracks) {
+                    console.log("    Track: " + track.title);
+                }
+            }
+        }
     }
 }
 main();

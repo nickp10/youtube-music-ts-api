@@ -1,12 +1,9 @@
-import YouTubeMusicGuest from "./youtube-music-guest";
+import { IYouTubeMusic, IYouTubeMusicAuthenticated, IYouTubeMusicGuest } from "../interfaces";
 import YouTubeMusicAuthenticated from "./youtube-music-authenticated";
+import YouTubeMusicGuest from "./youtube-music-guest";
 
-export default class YouTubeMusic {
-    static async guest(): Promise<YouTubeMusicGuest> {
-        return new YouTubeMusicGuest();
-    }
-
-    static async authenticate(cookiesStr: string): Promise<YouTubeMusicAuthenticated> {
+export default class YouTubeMusic implements IYouTubeMusic {
+    async authenticate(cookiesStr: string): Promise<IYouTubeMusicAuthenticated> {
         if (!cookiesStr) {
             throw new Error("The specific cookie string is missing");
         }
@@ -28,5 +25,9 @@ export default class YouTubeMusic {
             cookies.get("SAPISID"),
             cookies.get("__Secure-3PSID")
         );
+    }
+
+    async guest(): Promise<IYouTubeMusicGuest> {
+        return new YouTubeMusicGuest();
     }
 }

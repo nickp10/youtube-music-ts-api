@@ -1,0 +1,8 @@
+{
+    "mode": "modules",
+    "hideBreadcrumbs": "true",
+    "plugin": "typedoc-plugin-markdown",
+    "theme": "markdown",
+    "out": "temp-docs",
+    "stripInternal": "true"
+}
