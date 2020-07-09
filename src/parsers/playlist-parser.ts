@@ -1,5 +1,5 @@
 import BaseParser from "./base-parser";
-import { IPlaylistDetail, IPlaylistSummary, ITrackDetail } from "../interfaces";
+import { IPlaylistDetail, IPlaylistSummary, ITrackDetail } from "../interfaces-supplementary";
 import TrackParser from "./track-parser";
 
 export default class PlaylistParser extends BaseParser {

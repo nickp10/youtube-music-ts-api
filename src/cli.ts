@@ -5,7 +5,7 @@ import YouTubeMusic from "./service/youtube-music";
 * This allows the library to be tested in a sandbox environment during development.
 */
 async function main(): Promise<void> {
-    const cookieStr = "";
+    const cookieStr = "TODO: PUT YOUR COOKIE STRING HERE";
     const ytm = new YouTubeMusic();
     const ytma = await ytm.authenticate(cookieStr);
     const playlists = await ytma.getLibraryPlaylists();

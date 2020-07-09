@@ -21,7 +21,7 @@
   "scripts": {
     "build": "webpack --config webpack.prod.js",
     "build-debug": "webpack --config webpack.dev.js",
-    "build-docs": "rimraf temp-docs && typedoc src/interfaces.ts && concat-md temp-docs/interfaces > DOCUMENTATION.md && rimraf temp-docs",
+    "build-docs": "rimraf temp-docs && typedoc --inputFiles src/interfaces-primary.ts --inputFiles src/interfaces-supplementary.ts && concat-md temp-docs/interfaces > DOCUMENTATION.md && rimraf temp-docs",
     "prepare": "npm run build",
     "test": "mocha -r ts-node/register -r source-map-support/register src/**/*.spec.ts",
     "test-coverage": "nyc npm run test"

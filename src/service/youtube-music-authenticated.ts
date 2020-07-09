@@ -2,7 +2,8 @@ import * as http from "http";
 import sha1 = require("sha1");
 import YouTubeMusicGuest from "./youtube-music-guest";
 import PlaylistParser from "../parsers/playlist-parser";
-import { IPlaylistDetail, IPlaylistSummary, IYouTubeMusicAuthenticated} from "../interfaces";
+import { IPlaylistDetail, IPlaylistSummary } from "../interfaces-supplementary";
+import { IYouTubeMusicAuthenticated} from "../interfaces-primary";
 
 export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest implements IYouTubeMusicAuthenticated {
     private hsid: string;

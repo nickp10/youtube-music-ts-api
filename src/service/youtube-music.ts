@@ -1,4 +1,4 @@
-import { IYouTubeMusic, IYouTubeMusicAuthenticated, IYouTubeMusicGuest } from "../interfaces";
+import { IYouTubeMusic, IYouTubeMusicAuthenticated, IYouTubeMusicGuest } from "../interfaces-primary";
 import YouTubeMusicAuthenticated from "./youtube-music-authenticated";
 import YouTubeMusicGuest from "./youtube-music-guest";
 

@@ -2,18 +2,20 @@
 
 declare module 'youtube-music-ts-api' {
     export { default } from "youtube-music-ts-api/service/youtube-music";
-    export * from "youtube-music-ts-api/interfaces";
+    export * from "youtube-music-ts-api/interfaces-primary";
+    export * from "youtube-music-ts-api/interfaces-supplementary";
 }
 
 declare module 'youtube-music-ts-api/service/youtube-music' {
-    import { IYouTubeMusic, IYouTubeMusicAuthenticated, IYouTubeMusicGuest } from "youtube-music-ts-api/interfaces";
+    import { IYouTubeMusic, IYouTubeMusicAuthenticated, IYouTubeMusicGuest } from "youtube-music-ts-api/interfaces-primary";
     export default class YouTubeMusic implements IYouTubeMusic {
         authenticate(cookiesStr: string): Promise<IYouTubeMusicAuthenticated>;
         guest(): Promise<IYouTubeMusicGuest>;
     }
 }
 
-declare module 'youtube-music-ts-api/interfaces' {
+declare module 'youtube-music-ts-api/interfaces-primary' {
+    import { IPlaylistDetail, IPlaylistSummary } from "youtube-music-ts-api/interfaces-supplementary";
     export interface IYouTubeMusic {
         authenticate(cookiesStr: string): Promise<IYouTubeMusicAuthenticated>;
         guest(): Promise<IYouTubeMusicGuest>;
@@ -24,6 +26,9 @@ declare module 'youtube-music-ts-api/interfaces' {
     }
     export interface IYouTubeMusicGuest {
     }
+}
+
+declare module 'youtube-music-ts-api/interfaces-supplementary' {
     export interface IAlbumSummary {
         id?: string;
         name?: string;

@@ -1,2 +1,3 @@
 export { default } from "./service/youtube-music";
-export * from "./interfaces";
+export * from "./interfaces-primary";
+export * from "./interfaces-supplementary";

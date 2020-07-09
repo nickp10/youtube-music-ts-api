@@ -1,7 +1,7 @@
 import * as http from "http";
 import * as https from "https";
-import { IYouTubeMusicGuest } from "../interfaces";
 import { IIncomingMessage } from "../interfaces-internal";
+import { IYouTubeMusicGuest } from "../interfaces-primary";
 import YouTubeMusicContext from "../context";
 
 export default class YouTubeMusicGuest implements IYouTubeMusicGuest {

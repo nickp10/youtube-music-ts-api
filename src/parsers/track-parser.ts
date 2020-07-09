@@ -1,5 +1,5 @@
 import BaseParser from "./base-parser";
-import { IAlbumSummary, IArtistSummary, ITrackDetail } from "../interfaces";
+import { IAlbumSummary, IArtistSummary, ITrackDetail } from "../interfaces-supplementary";
 
 export default class TrackParser extends BaseParser {
     parseTrackDetail(trackObj: any): ITrackDetail {
