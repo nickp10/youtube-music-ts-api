@@ -6,7 +6,7 @@ This is a TypeScript API for YouTube Music (not to be confused with music videos
 
 Using the API
 ----
-This node module can be used as a dependency of another node module. Run `npm install youtube-music-ts-api --save` to add it as a dependency to your node module. An example usage of the module (note this example was built with the TypeScript target set to es6 and module set to commonjs, i.e. `tsc demo.ts --target es6 --module commonjs`):
+This node module can be used as a dependency of another node module. Run `npm install youtube-music-ts-api --save` to add it as a dependency to your node module. An example usage of the module (note this example was built with TypeScript using these options `tsc demo.ts --target es2017 --module esnext --moduleResolution node`):
 
 ```
 import YouTubeMusic from "youtube-music-ts-api";

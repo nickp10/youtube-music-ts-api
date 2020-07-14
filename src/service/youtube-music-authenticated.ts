@@ -1,5 +1,5 @@
 import * as http from "http";
-import sha1 = require("sha1");
+import sha1 from "sha1";
 import YouTubeMusicGuest from "./youtube-music-guest";
 import PlaylistParser from "../parsers/playlist-parser";
 import { IPlaylistDetail, IPlaylistSummary } from "../interfaces-supplementary";
@@ -50,14 +50,20 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
     }
 
     async getPlaylist(id: string): Promise<IPlaylistDetail> {
-        const response = await this.sendRequest("browse", {
+        const data = {
             browseId: id,
             browseEndpointContextSupportedConfigs: {
                 browseEndpointContextMusicConfig: {
                     pageType: "MUSIC_PAGE_TYPE_PLAYLIST"
                 }
             }
-        });
-        return this.playlistParser.parsePlaylistDetailResponse(response);
+        };
+        const response = await this.sendRequest("browse", data);
+        const playlist = this.playlistParser.parsePlaylistDetailResponse(response);
+        while (playlist.continuationToken) {
+            const continuation = await this.sendRequest("browse", data, `ctoken=${playlist.continuationToken}&continuation=${playlist.continuationToken}`);
+            this.playlistParser.parsePlaylistDetailContinuation(playlist, continuation);
+        }
+        return playlist;
     }
 }

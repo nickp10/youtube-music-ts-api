@@ -1,12 +1,13 @@
 {
     "compilerOptions": {
+        "allowSyntheticDefaultImports": true,
         "declaration": true,
         "declarationDir": "./build-dts",
-        "module": "commonjs",
+        "module": "esnext",
         "newLine": "LF",
         "removeComments": true,
         "sourceMap": true,
-        "target": "es6"
+        "target": "es2017"
     },
     "include": [
       "src/**/*.ts"

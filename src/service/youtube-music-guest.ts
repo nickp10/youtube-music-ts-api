@@ -16,7 +16,7 @@ export default class YouTubeMusicGuest implements IYouTubeMusicGuest {
         };
     }
 
-    protected async sendRequest(path: string, data?: any): Promise<any> {
+    protected async sendRequest(path: string, data?: any, additionalQueryString?: string): Promise<any> {
         let dataStr: string = undefined;
         if (data) {
             data = {
@@ -25,9 +25,10 @@ export default class YouTubeMusicGuest implements IYouTubeMusicGuest {
             };
             dataStr = JSON.stringify(data);
         }
+        const queryString = additionalQueryString ? `${this.queryString}&${additionalQueryString}` : this.queryString;
         const response = await this.sendHttpsRequest({
             hostname: this.hostname,
-            path: `${this.basePath}${path}${this.queryString}`,
+            path: `${this.basePath}${path}${queryString}`,
             method: "POST",
             headers: this.generateHeaders()
         }, dataStr);

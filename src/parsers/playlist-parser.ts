@@ -1,5 +1,6 @@
 import BaseParser from "./base-parser";
-import { IPlaylistDetail, IPlaylistSummary, ITrackDetail } from "../interfaces-supplementary";
+import { IInternalPlaylistDetail } from "../interfaces-internal";
+import { IPlaylistSummary, ITrackDetail } from "../interfaces-supplementary";
 import TrackParser from "./track-parser";
 
 export default class PlaylistParser extends BaseParser {
@@ -48,15 +49,24 @@ export default class PlaylistParser extends BaseParser {
         };
     }
 
-    parsePlaylistDetailResponse(response: any): IPlaylistDetail {
-        const playlistObj: any = this.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicPlaylistShelfRenderer");
+    parsePlaylistDetailResponse(response: any): IInternalPlaylistDetail {
+        const playlistObj = this.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicPlaylistShelfRenderer");
         if (playlistObj) {
             return this.parsePlaylistDetail(response, playlistObj);
         }
         return undefined;
     }
 
-    parsePlaylistDetail(rootPlaylistObj: any, childPlaylistObj: any): IPlaylistDetail {
+    parsePlaylistDetailContinuation(playlist: IInternalPlaylistDetail, response: any): void {
+        const tracksObj = this.traverse(response, "continuationContents", "musicPlaylistShelfContinuation", "contents");
+        const tracks = this.parsePlaylistDetailTracks(tracksObj);
+        if (Array.isArray(playlist.tracks)) {
+            playlist.tracks.push.apply(playlist.tracks, tracks);
+        }
+        playlist.continuationToken = this.traverse(response, "continuationContents", "musicPlaylistShelfContinuation", "continuations", "0", "nextContinuationData", "continuation");
+    }
+
+    parsePlaylistDetail(rootPlaylistObj: any, childPlaylistObj: any): IInternalPlaylistDetail {
         const isPublic = typeof this.traverse(rootPlaylistObj, "header", "musicEditablePlaylistDetailHeaderRenderer") === "undefined";
         const privacyHeader = isPublic ?
             rootPlaylistObj :
@@ -73,8 +83,21 @@ export default class PlaylistParser extends BaseParser {
                 count = parseInt(countParts[0]);
             }
         }
-        const tracks: ITrackDetail[] = [];
         const tracksObj = this.traverse(childPlaylistObj, "contents");
+        const tracks = this.parsePlaylistDetailTracks(tracksObj);
+        return {
+            id: this.traverse(childPlaylistObj, "playlistId"),
+            name: this.traverse(playlistHeader, "title", "runs", "0", "text"),
+            description: this.traverse(playlistHeader, "description", "runs", "0", "text"),
+            privacy: privacy,
+            count: count,
+            tracks: tracks,
+            continuationToken: this.traverse(childPlaylistObj, "continuations", "0", "nextContinuationData", "continuation")
+        };
+    }
+
+    parsePlaylistDetailTracks(tracksObj: any): ITrackDetail[] {
+        const tracks: ITrackDetail[] = [];
         if (Array.isArray(tracksObj)) {
             for (const trackObj of tracksObj) {
                 const childTrackObj = this.traverse(trackObj, "musicResponsiveListItemRenderer");
@@ -86,13 +109,6 @@ export default class PlaylistParser extends BaseParser {
                 }
             }
         }
-        return {
-            id: this.traverse(childPlaylistObj, "playlistId"),
-            name: this.traverse(playlistHeader, "title", "runs", "0", "text"),
-            description: this.traverse(playlistHeader, "description", "runs", "0", "text"),
-            privacy: privacy,
-            count: count,
-            tracks: tracks
-        };
+        return tracks;
     }
 }
