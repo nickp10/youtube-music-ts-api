@@ -91,9 +91,9 @@ ___
 
 ###  getPlaylist
 
-▸ **getPlaylist**(`id`: string): *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
+▸ **getPlaylist**(`id`: string, `maxRetries?`: number): *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
 
-*Defined in [interfaces-primary.ts:43](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L43)*
+*Defined in [interfaces-primary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L48)*
 
 Gets detailed information for a specific playlist.
 
@@ -102,6 +102,7 @@ Gets detailed information for a specific playlist.
 Name | Type | Description |
 ------ | ------ | ------ |
 `id` | string | The ID of the playlist to get the detailed information for. |
+`maxRetries?` | number | An optional maximum number of retries to obtain the tracks. YouTube Music is incredibly buggy in that not all tracks will be returned in a single request. If the request is retried, you may get a different set of tracks in the response. If you retry enough times, you will eventually get all the tracks (a union operation is done internally between all the tracks returned from each individual request). |
 
 **Returns:** *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
 
