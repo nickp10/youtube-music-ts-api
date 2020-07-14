@@ -12,7 +12,7 @@ export default class PlaylistParser extends BaseParser {
 
     parsePlaylistsSummaryResponse(response: any): IPlaylistSummary[] {
         const playlists: IPlaylistSummary[] = [];
-        const items: any[] = this.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "itemSectionRenderer", "contents", "0", "gridRenderer", "items");
+        const items: any[] = this.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "*", "itemSectionRenderer", "contents", "0", "gridRenderer", "items");
         if (Array.isArray(items)) {
             // Skip playlist at index 0 since that's the "New Playlist" playlist
             for (let i = 1; i < items.length; i++) {
@@ -28,11 +28,17 @@ export default class PlaylistParser extends BaseParser {
 
     parsePlaylistSummary(playlistObj: any): IPlaylistSummary {
         let count = 0;
-        const countStr = this.traverse(playlistObj, "musicTwoRowItemRenderer", "subtitle", "runs", "2", "text");
-        if (countStr) {
-            const countParts = countStr.split(" ");
-            if (countParts && countParts.length > 0) {
-                count = parseInt(countParts[0]);
+        const subtitles = this.traverse(playlistObj, "musicTwoRowItemRenderer", "subtitle", "runs");
+        const countRegex = /(\d+)\s+\w+/;
+        if (Array.isArray(subtitles)) {
+            for (let i = 0; i < subtitles.length; i++) {
+                const subtitle = subtitles[i];
+                const text: string = subtitle.text;
+                const match = text ? text.match(countRegex) : undefined;
+                if (match && match.length > 1) {
+                    count = parseInt(match[1]);
+                    break;
+                }
             }
         }
         return {
