@@ -1,12 +1,12 @@
 {
   "name": "youtube-music-ts-api",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An unofficial YouTube Music API written in TypeScript for easy integration into your projects",
   "main": "build/exports.js",
-  "types": "index.d.ts",
+  "types": "build/exports.d.ts",
   "files": [
     "build/exports.js",
-    "index.d.ts"
+    "build/exports.d.ts"
   ],
   "repository": {
     "type": "git",

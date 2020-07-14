@@ -52,7 +52,7 @@ module.exports = {
             baseDir: "build-dts",
             main: "build-dts/exports.d.ts",
             name: "youtube-music-ts-api",
-            out: "../index.d.ts"
+            out: "../build/exports.d.ts"
         })
     ]
 };

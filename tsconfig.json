@@ -5,7 +5,6 @@
         "declarationDir": "./build-dts",
         "module": "esnext",
         "newLine": "LF",
-        "removeComments": true,
         "sourceMap": true,
         "target": "es2017"
     },

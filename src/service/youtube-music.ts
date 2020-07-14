@@ -2,7 +2,19 @@ import { IYouTubeMusic, IYouTubeMusicAuthenticated, IYouTubeMusicGuest } from ".
 import YouTubeMusicAuthenticated from "./youtube-music-authenticated";
 import YouTubeMusicGuest from "./youtube-music-guest";
 
+/**
+ * Defines the main YouTube Music API object. Using this object, you can either choose to make calls as a guest or an
+ * authenticated user. Not all APIs are available as a guest, so it is preferred to authenticate the user if possible.
+ */
 export default class YouTubeMusic implements IYouTubeMusic {
+    /**
+     * Authenticates the user with the YouTube Music API. This function overload requies the cookie string of a valid logged in user.
+     * 
+     * @param cookiesStr The cookie string of a valid logged in user. The minimum required cookie values needed are the HSID, SSID,
+     * APISID, SAPISID, and __Secure-3PSID. To obtain this cookie value, log into https://music.youtube.com as a user and use your
+     * browser's developer tools to obtain the "cookie" value sent as a request header. Extra values in the cookie will be ignored.
+     * @returns A promise that will yield authenticated access to the YouTube Music API.
+     */
     async authenticate(cookiesStr: string): Promise<IYouTubeMusicAuthenticated> {
         if (!cookiesStr) {
             throw new Error("The specific cookie string is missing");
@@ -27,6 +39,11 @@ export default class YouTubeMusic implements IYouTubeMusic {
         );
     }
 
+    /**
+     * Provides guest access to the YouTube Music API. Only non-restrictive APIs (such as public playlists) are available to guests.
+     * 
+     * @returns A promise that will yield guest access to the YouTube Music API.
+     */
     async guest(): Promise<IYouTubeMusicGuest> {
         return new YouTubeMusicGuest();
     }
