@@ -22,7 +22,7 @@ declare module 'youtube-music-ts-api/interfaces-primary' {
     }
     export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
         getLibraryPlaylists(): Promise<IPlaylistSummary[]>;
-        getPlaylist(id: string): Promise<IPlaylistDetail>;
+        getPlaylist(id: string, maxRetries?: number): Promise<IPlaylistDetail>;
     }
     export interface IYouTubeMusicGuest {
     }
