@@ -70,16 +70,52 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 
 ### Methods
 
+* [getAlbum](#getalbum)
+* [getLibraryAlbums](#getlibraryalbums)
 * [getLibraryPlaylists](#getlibraryplaylists)
 * [getPlaylist](#getplaylist)
 
 ## Methods
 
+###  getAlbum
+
+▸ **getAlbum**(`id`: string): *Promise‹[IAlbumDetail](#_interfaces_supplementary_ialbumdetailmd)›*
+
+*Defined in [interfaces-primary.ts:43](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L43)*
+
+Gets detailed information for a specific album.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`id` | string | The ID of the album to get the detailed information for. |
+
+**Returns:** *Promise‹[IAlbumDetail](#_interfaces_supplementary_ialbumdetailmd)›*
+
+A promise that will yield the detailed information for a specific album.
+
+___
+
+###  getLibraryAlbums
+
+▸ **getLibraryAlbums**(): *Promise‹[IAlbumSummary](#_interfaces_supplementary_ialbumsummarymd)[]›*
+
+*Defined in [interfaces-primary.ts:35](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L35)*
+
+Gets all the albums in the user's library.
+
+**Returns:** *Promise‹[IAlbumSummary](#_interfaces_supplementary_ialbumsummarymd)[]›*
+
+A promise that will yield an array of all the albums in the user's library.
+
+___
+
 ###  getLibraryPlaylists
 
 ▸ **getLibraryPlaylists**(): *Promise‹[IPlaylistSummary](#_interfaces_supplementary_iplaylistsummarymd)[]›*
 
-*Defined in [interfaces-primary.ts:35](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L35)*
+*Defined in [interfaces-primary.ts:50](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L50)*
 
 Gets all the playlists in the user's library.
 
@@ -93,7 +129,7 @@ ___
 
 ▸ **getPlaylist**(`id`: string, `maxRetries?`: number): *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
 
-*Defined in [interfaces-primary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L48)*
+*Defined in [interfaces-primary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L63)*
 
 Gets detailed information for a specific playlist.
 
@@ -123,25 +159,73 @@ Defines the YouTube Music APIs available to a guest.
   ↳ [IYouTubeMusicAuthenticated](#_interfaces_primary_iyoutubemusicauthenticatedmd)
 
 
-<a name="_interfaces_supplementary_ialbumsummarymd"></a>
+<a name="_interfaces_supplementary_ialbumdetailmd"></a>
 
 
-# Interface: IAlbumSummary
+# Interface: IAlbumDetail
 
-Defines an album summary.
+Defines the details for an album.
 
 ## Hierarchy
 
-* **IAlbumSummary**
+* **IAlbumDetail**
 
 ## Index
 
 ### Properties
 
+* [artists](#optional-artists)
+* [count](#optional-count)
+* [description](#optional-description)
+* [durationMillis](#optional-durationmillis)
 * [id](#optional-id)
 * [name](#optional-name)
+* [releaseDay](#optional-releaseday)
+* [releaseMonth](#optional-releasemonth)
+* [releaseYear](#optional-releaseyear)
+* [tracks](#tracks)
 
 ## Properties
+
+### `Optional` artists
+
+• **artists**? : *[IArtistSummary](#_interfaces_supplementary_iartistsummarymd)[]*
+
+*Defined in [interfaces-supplementary.ts:33](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L33)*
+
+The artist(s) that composed the album.
+
+___
+
+### `Optional` count
+
+• **count**? : *number*
+
+*Defined in [interfaces-supplementary.ts:23](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L23)*
+
+The count of tracks within the album.
+
+___
+
+### `Optional` description
+
+• **description**? : *string*
+
+*Defined in [interfaces-supplementary.ts:18](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L18)*
+
+The description of the album.
+
+___
+
+### `Optional` durationMillis
+
+• **durationMillis**? : *number*
+
+*Defined in [interfaces-supplementary.ts:28](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L28)*
+
+The duration of the album in milliseconds.
+
+___
 
 ### `Optional` id
 
@@ -160,6 +244,107 @@ ___
 *Defined in [interfaces-supplementary.ts:13](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L13)*
 
 The name of the album.
+
+___
+
+### `Optional` releaseDay
+
+• **releaseDay**? : *number*
+
+*Defined in [interfaces-supplementary.ts:38](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L38)*
+
+The day the album was released.
+
+___
+
+### `Optional` releaseMonth
+
+• **releaseMonth**? : *number*
+
+*Defined in [interfaces-supplementary.ts:43](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L43)*
+
+The month the album was released.
+
+___
+
+### `Optional` releaseYear
+
+• **releaseYear**? : *number*
+
+*Defined in [interfaces-supplementary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L48)*
+
+The year the album was released.
+
+___
+
+###  tracks
+
+• **tracks**: *[ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[]*
+
+*Defined in [interfaces-supplementary.ts:53](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L53)*
+
+The array of tracks within the album.
+
+
+<a name="_interfaces_supplementary_ialbumsummarymd"></a>
+
+
+# Interface: IAlbumSummary
+
+Defines an album summary.
+
+## Hierarchy
+
+* **IAlbumSummary**
+
+## Index
+
+### Properties
+
+* [artist](#optional-artist)
+* [id](#optional-id)
+* [name](#optional-name)
+* [year](#optional-year)
+
+## Properties
+
+### `Optional` artist
+
+• **artist**? : *[IArtistSummary](#_interfaces_supplementary_iartistsummarymd)*
+
+*Defined in [interfaces-supplementary.ts:73](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L73)*
+
+The artist that composed the album.
+
+___
+
+### `Optional` id
+
+• **id**? : *string*
+
+*Defined in [interfaces-supplementary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L63)*
+
+The ID of the album.
+
+___
+
+### `Optional` name
+
+• **name**? : *string*
+
+*Defined in [interfaces-supplementary.ts:68](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L68)*
+
+The name of the album.
+
+___
+
+### `Optional` year
+
+• **year**? : *string*
+
+*Defined in [interfaces-supplementary.ts:78](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L78)*
+
+The year the album was released.
 
 
 <a name="_interfaces_supplementary_iartistsummarymd"></a>
@@ -186,7 +371,7 @@ Defines an artist summary.
 
 • **id**? : *string*
 
-*Defined in [interfaces-supplementary.ts:23](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L23)*
+*Defined in [interfaces-supplementary.ts:88](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L88)*
 
 The ID of the artist.
 
@@ -196,7 +381,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [interfaces-supplementary.ts:28](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L28)*
+*Defined in [interfaces-supplementary.ts:93](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L93)*
 
 The name of the artist.
 
@@ -229,7 +414,7 @@ Defines the details for a playlist.
 
 • **count**? : *number*
 
-*Defined in [interfaces-supplementary.ts:53](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L53)*
+*Defined in [interfaces-supplementary.ts:118](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L118)*
 
 The count of tracks within the playlist.
 
@@ -239,7 +424,7 @@ ___
 
 • **description**? : *string*
 
-*Defined in [interfaces-supplementary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L48)*
+*Defined in [interfaces-supplementary.ts:113](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L113)*
 
 The description of the playlist.
 
@@ -249,7 +434,7 @@ ___
 
 • **id**? : *string*
 
-*Defined in [interfaces-supplementary.ts:38](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L38)*
+*Defined in [interfaces-supplementary.ts:103](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L103)*
 
 The ID of the playlist.
 
@@ -259,7 +444,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [interfaces-supplementary.ts:43](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L43)*
+*Defined in [interfaces-supplementary.ts:108](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L108)*
 
 The name of the playlist.
 
@@ -269,7 +454,7 @@ ___
 
 • **privacy**? : *string*
 
-*Defined in [interfaces-supplementary.ts:58](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L58)*
+*Defined in [interfaces-supplementary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L123)*
 
 The privacy level of the playlist.
 
@@ -279,7 +464,7 @@ ___
 
 • **tracks**? : *[ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[]*
 
-*Defined in [interfaces-supplementary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L63)*
+*Defined in [interfaces-supplementary.ts:128](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L128)*
 
 The array of tracks within the playlist.
 
@@ -309,7 +494,7 @@ Defines a playlist summary.
 
 • **count**? : *number*
 
-*Defined in [interfaces-supplementary.ts:83](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L83)*
+*Defined in [interfaces-supplementary.ts:148](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L148)*
 
 The count of tracks within the playlist.
 
@@ -319,7 +504,7 @@ ___
 
 • **id**? : *string*
 
-*Defined in [interfaces-supplementary.ts:73](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L73)*
+*Defined in [interfaces-supplementary.ts:138](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L138)*
 
 The ID of the playlist.
 
@@ -329,7 +514,7 @@ ___
 
 • **name**? : *string*
 
-*Defined in [interfaces-supplementary.ts:78](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L78)*
+*Defined in [interfaces-supplementary.ts:143](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L143)*
 
 The name of the playlist.
 
@@ -352,8 +537,10 @@ Defines the details for a track.
 * [album](#optional-album)
 * [artists](#optional-artists)
 * [duration](#optional-duration)
+* [durationMillis](#optional-durationmillis)
 * [id](#optional-id)
 * [title](#optional-title)
+* [trackNumber](#optional-tracknumber)
 
 ## Properties
 
@@ -361,7 +548,7 @@ Defines the details for a track.
 
 • **album**? : *[IAlbumSummary](#_interfaces_supplementary_ialbumsummarymd)*
 
-*Defined in [interfaces-supplementary.ts:108](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L108)*
+*Defined in [interfaces-supplementary.ts:173](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L173)*
 
 The album the track is from.
 
@@ -371,7 +558,7 @@ ___
 
 • **artists**? : *[IArtistSummary](#_interfaces_supplementary_iartistsummarymd)[]*
 
-*Defined in [interfaces-supplementary.ts:103](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L103)*
+*Defined in [interfaces-supplementary.ts:168](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L168)*
 
 The artist(s) that compose the track.
 
@@ -381,9 +568,19 @@ ___
 
 • **duration**? : *string*
 
-*Defined in [interfaces-supplementary.ts:113](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L113)*
+*Defined in [interfaces-supplementary.ts:178](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L178)*
 
 The duration of the track as a readable string.
+
+___
+
+### `Optional` durationMillis
+
+• **durationMillis**? : *number*
+
+*Defined in [interfaces-supplementary.ts:183](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L183)*
+
+The duration of the track in milliseconds.
 
 ___
 
@@ -391,7 +588,7 @@ ___
 
 • **id**? : *string*
 
-*Defined in [interfaces-supplementary.ts:93](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L93)*
+*Defined in [interfaces-supplementary.ts:158](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L158)*
 
 The ID of the track.
 
@@ -401,6 +598,16 @@ ___
 
 • **title**? : *string*
 
-*Defined in [interfaces-supplementary.ts:98](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L98)*
+*Defined in [interfaces-supplementary.ts:163](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L163)*
 
 The title of the track.
+
+___
+
+### `Optional` trackNumber
+
+• **trackNumber**? : *number*
+
+*Defined in [interfaces-supplementary.ts:188](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L188)*
+
+The track number within an album.
