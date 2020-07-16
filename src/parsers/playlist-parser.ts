@@ -1,7 +1,7 @@
 import BaseParser from "./base-parser";
+import TrackParser from "./track-parser";
 import { IInternalPlaylistDetail } from "../interfaces-internal";
 import { IPlaylistSummary, ITrackDetail } from "../interfaces-supplementary";
-import TrackParser from "./track-parser";
 
 export default class PlaylistParser extends BaseParser {
     private trackParser: TrackParser;
@@ -106,6 +106,18 @@ export default class PlaylistParser extends BaseParser {
                     if (track) {
                         tracks.push(track);
                     }
+                }
+            }
+        }
+        return tracks;
+    }
+
+    mergeValidPlaylistTracks(...playlists: IInternalPlaylistDetail[]): ITrackDetail[] {
+        const tracks: ITrackDetail[] = [];
+        for (const playlist of playlists) {
+            for (const track of playlist.tracks) {
+                if (!this.trackParser.isTrackDataMissing(track) && !tracks.find(t => t.id === track.id)) {
+                    tracks.push(track);
                 }
             }
         }

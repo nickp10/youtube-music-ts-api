@@ -1,8 +1,10 @@
 import * as http from "http";
 import sha1 from "sha1";
-import YouTubeMusicGuest from "./youtube-music-guest";
+import AlbumParser from "../parsers/album-parser";
 import PlaylistParser from "../parsers/playlist-parser";
-import { IPlaylistDetail, IPlaylistSummary, ITrackDetail } from "../interfaces-supplementary";
+import TrackParser from "../parsers/track-parser";
+import YouTubeMusicGuest from "./youtube-music-guest";
+import { IPlaylistDetail, IPlaylistSummary, IAlbumSummary, IAlbumDetail } from "../interfaces-supplementary";
 import { IYouTubeMusicAuthenticated} from "../interfaces-primary";
 
 export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest implements IYouTubeMusicAuthenticated {
@@ -11,7 +13,9 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
     private apisid: string;
     private sapisid: string;
     private secure3psid: string;
+    private albumParser: AlbumParser;
     private playlistParser: PlaylistParser;
+    private trackParser: TrackParser;
 
     constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string) {
         super();
@@ -20,7 +24,9 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         this.apisid = apisid;
         this.sapisid = sapisid;
         this.secure3psid = secure3psid;
+        this.albumParser = new AlbumParser();
         this.playlistParser = new PlaylistParser();
+        this.trackParser = new TrackParser();
     }
 
     protected generateHeaders(): http.OutgoingHttpHeaders {
@@ -42,6 +48,26 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         return `HSID=${this.hsid}; SSID=${this.ssid}; APISID=${this.apisid}; SAPISID=${this.sapisid}; __Secure-3PSID=${this.secure3psid}`;
     }
 
+    async getLibraryAlbums(): Promise<IAlbumSummary[]> {
+        const response = await this.sendRequest("browse", {
+            browseId: "FEmusic_liked_albums",
+        });
+        return this.albumParser.parseAlbumsSummaryResponse(response);
+    }
+
+    async getAlbum(id: string): Promise<IAlbumDetail> {
+        const data = {
+            browseId: id,
+            browseEndpointContextSupportedConfigs: {
+                browseEndpointContextMusicConfig: {
+                    pageType: "MUSIC_PAGE_TYPE_ALBUM"
+                }
+            }
+        };
+        const response = await this.sendRequest("browse", data);
+        return this.albumParser.parseAlbumDetailResponse(response);
+    }
+
     async getLibraryPlaylists(): Promise<IPlaylistSummary[]> {
         const response = await this.sendRequest("browse", {
             browseId: "FEmusic_liked_playlists",
@@ -55,10 +81,10 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         // YouTube Music is buggy. Some songs fail to return. But if we try again, it may work.
         while (maxRetries > 0) {
             const missingSongs = playlist.tracks.length !== playlist.count;
-            const missingData = !!playlist.tracks.find(t => this.isTrackDataMissing(t));
+            const missingData = !!playlist.tracks.find(t => this.trackParser.isTrackDataMissing(t));
             if (missingSongs || missingData) {
                 const retry = await this.getPlaylistInternal(id);
-                const mergedTracks = this.mergeValidPlaylistTracks(playlist, retry);
+                const mergedTracks = this.playlistParser.mergeValidPlaylistTracks(playlist, retry);
                 playlist.tracks = mergedTracks;
                 maxRetries--;
             } else {
@@ -84,21 +110,5 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
             this.playlistParser.parsePlaylistDetailContinuation(playlist, continuation);
         }
         return playlist;
-    }
-
-    private mergeValidPlaylistTracks(...playlists: IPlaylistDetail[]): ITrackDetail[] {
-        const tracks: ITrackDetail[] = [];
-        for (const playlist of playlists) {
-            for (const track of playlist.tracks) {
-                if (!this.isTrackDataMissing(track) && !tracks.find(t => t.id === track.id)) {
-                    tracks.push(track);
-                }
-            }
-        }
-        return tracks;
-    }
-
-    private isTrackDataMissing(track: ITrackDetail): boolean {
-        return track.title == "Song is private";
     }
 }

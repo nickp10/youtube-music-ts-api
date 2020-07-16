@@ -1,4 +1,59 @@
 /**
+ * Defines the details for an album.
+ */
+export interface IAlbumDetail {
+    /**
+     * The ID of the album.
+     */
+    id?: string;
+
+    /**
+     * The name of the album.
+     */
+    name?: string;
+
+    /**
+     * The description of the album.
+     */
+    description?: string;
+
+    /**
+     * The count of tracks within the album.
+     */
+    count?: number;
+
+    /**
+     * The duration of the album in milliseconds.
+     */
+    durationMillis?: number;
+
+    /**
+     * The artist(s) that composed the album.
+     */
+    artists?: IArtistSummary[];
+
+    /**
+     * The day the album was released.
+     */
+    releaseDay?: number;
+
+    /**
+     * The month the album was released.
+     */
+    releaseMonth?: number;
+
+    /**
+     * The year the album was released.
+     */
+    releaseYear?: number;
+
+    /**
+     * The array of tracks within the album.
+     */
+    tracks: ITrackDetail[];
+}
+
+/**
  * Defines an album summary.
  */
 export interface IAlbumSummary {
@@ -11,6 +66,16 @@ export interface IAlbumSummary {
      * The name of the album.
      */
     name?: string;
+
+    /**
+     * The artist that composed the album.
+     */
+    artist?: IArtistSummary;
+
+    /**
+     * The year the album was released.
+     */
+    year?: string;
 }
 
 /**
@@ -111,4 +176,14 @@ export interface ITrackDetail {
      * The duration of the track as a readable string.
      */
     duration?: string;
+
+    /**
+     * The duration of the track in milliseconds.
+     */
+    durationMillis?: number;
+
+    /**
+     * The track number within an album.
+     */
+    trackNumber?: number;
 }

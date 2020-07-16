@@ -32,4 +32,17 @@ export default class TrackParser extends BaseParser {
             duration: duration
         };
     }
+
+    /**
+     * Checks whether or not the track is missing data or if it contains all the appropriate data.
+     * 
+     * The YouTube Music API will fail sometimes and return "Song is private" instead of the actual track data.
+     * This function checks for the existence of that problematic symptom.
+     * 
+     * @param track The track to determine if the data is missing.
+     * @returns True if the track is missing data, or false if the track contains all the appropriate data.
+     */
+    isTrackDataMissing(track: ITrackDetail): boolean {
+        return track.title == "Song is private";
+    }
 }

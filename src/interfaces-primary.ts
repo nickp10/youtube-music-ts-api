@@ -1,4 +1,4 @@
-import { IPlaylistDetail, IPlaylistSummary } from "./interfaces-supplementary";
+import { IAlbumDetail, IAlbumSummary, IPlaylistDetail, IPlaylistSummary } from "./interfaces-supplementary";
 
 /**
  * Defines the main YouTube Music API object. Using this object, you can either choose to make calls as a guest or an
@@ -27,6 +27,21 @@ export interface IYouTubeMusic {
  * Defines the YouTube Music APIs available to an authenticated user. An authenticated user also naturally includes the APIs available to a guest.
  */
 export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
+    /**
+     * Gets all the albums in the user's library.
+     * 
+     * @returns A promise that will yield an array of all the albums in the user's library.
+     */
+    getLibraryAlbums(): Promise<IAlbumSummary[]>;
+
+    /**
+     * Gets detailed information for a specific album.
+     * 
+     * @param id The ID of the album to get the detailed information for.
+     * @returns A promise that will yield the detailed information for a specific album.
+     */
+    getAlbum(id: string): Promise<IAlbumDetail>;
+
     /**
      * Gets all the playlists in the user's library.
      * 
