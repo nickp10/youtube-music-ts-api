@@ -58,8 +58,8 @@ export default class PlaylistParser extends BaseParser {
     }
 
     parsePlaylistDetailContinuation(playlist: IInternalPlaylistDetail, response: any): void {
-        const tracksObj = this.traverse(response, "continuationContents", "musicPlaylistShelfContinuation", "contents");
-        const tracks = this.parsePlaylistDetailTracks(tracksObj);
+        const trackObjs = this.traverse(response, "continuationContents", "musicPlaylistShelfContinuation", "contents");
+        const tracks = this.trackParser.parseTrackDetails(trackObjs);
         if (Array.isArray(playlist.tracks)) {
             playlist.tracks.push.apply(playlist.tracks, tracks);
         }
@@ -83,33 +83,16 @@ export default class PlaylistParser extends BaseParser {
                 count = parseInt(countParts[0]);
             }
         }
-        const tracksObj = this.traverse(childPlaylistObj, "contents");
-        const tracks = this.parsePlaylistDetailTracks(tracksObj);
+        const trackObjs = this.traverse(childPlaylistObj, "contents");
         return {
             id: this.traverse(childPlaylistObj, "playlistId"),
             name: this.traverse(playlistHeader, "title", "runs", "0", "text"),
             description: this.traverse(playlistHeader, "description", "runs", "0", "text"),
             privacy: privacy,
             count: count,
-            tracks: tracks,
+            tracks: this.trackParser.parseTrackDetails(trackObjs),
             continuationToken: this.traverse(childPlaylistObj, "continuations", "0", "nextContinuationData", "continuation")
         };
-    }
-
-    parsePlaylistDetailTracks(tracksObj: any): ITrackDetail[] {
-        const tracks: ITrackDetail[] = [];
-        if (Array.isArray(tracksObj)) {
-            for (const trackObj of tracksObj) {
-                const childTrackObj = this.traverse(trackObj, "musicResponsiveListItemRenderer");
-                if (childTrackObj) {
-                    const track = this.trackParser.parseTrackDetail(childTrackObj);
-                    if (track) {
-                        tracks.push(track);
-                    }
-                }
-            }
-        }
-        return tracks;
     }
 
     mergeValidPlaylistTracks(...playlists: IInternalPlaylistDetail[]): ITrackDetail[] {

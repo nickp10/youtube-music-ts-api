@@ -1,70 +1,59 @@
-import * as http from "http";
-import * as https from "https";
-import { IIncomingMessage } from "../interfaces-internal";
+import YouTubeMusicBase from "./youtube-music-base";
+import { IAlbumDetail, IPlaylistDetail } from "../interfaces-supplementary";
 import { IYouTubeMusicGuest } from "../interfaces-primary";
-import YouTubeMusicContext from "../context";
 
-export default class YouTubeMusicGuest implements IYouTubeMusicGuest {
-    hostname: string = "music.youtube.com";
-    basePath: string = "/youtubei/v1/";
-    queryString: string = "?alt=json&key=AIzaSyC9XL3ZjWddXya6X74dJoCTL-WEYFDNX30";
-    origin: string = "https://music.youtube.com";
+export default class YouTubeMusicGuest extends YouTubeMusicBase implements IYouTubeMusicGuest {
+    constructor() {
+        super();
+    }
 
-    protected generateHeaders(): http.OutgoingHttpHeaders {
-        return {
-            "X-Origin": this.origin
+    async getAlbum(id: string): Promise<IAlbumDetail> {
+        const data = {
+            browseId: id,
+            browseEndpointContextSupportedConfigs: {
+                browseEndpointContextMusicConfig: {
+                    pageType: "MUSIC_PAGE_TYPE_ALBUM"
+                }
+            }
         };
+        const response = await this.sendRequest("browse", data);
+        return this.albumParser.parseAlbumDetailResponse(response);
     }
 
-    protected async sendRequest(path: string, data?: any, additionalQueryString?: string): Promise<any> {
-        let dataStr: string = undefined;
-        if (data) {
-            data = {
-                ...YouTubeMusicContext,
-                ...data
-            };
-            dataStr = JSON.stringify(data);
-        }
-        const queryString = additionalQueryString ? `${this.queryString}&${additionalQueryString}` : this.queryString;
-        const response = await this.sendHttpsRequest({
-            hostname: this.hostname,
-            path: `${this.basePath}${path}${queryString}`,
-            method: "POST",
-            headers: this.generateHeaders()
-        }, dataStr);
-        if (response.statusCode === 200 && response.body) {
-            const body = JSON.parse(response.body);
-            if (body) {
-                return body;
+    async getPlaylist(id: string, maxRetries: number = 0): Promise<IPlaylistDetail> {
+        const playlist = await this.getPlaylistInternal(id);
+
+        // YouTube Music is buggy. Some songs fail to return. But if we try again, it may work.
+        while (maxRetries > 0) {
+            const missingSongs = playlist.tracks.length !== playlist.count;
+            const missingData = !!playlist.tracks.find(t => this.trackParser.isTrackDataMissing(t));
+            if (missingSongs || missingData) {
+                const retry = await this.getPlaylistInternal(id);
+                const mergedTracks = this.playlistParser.mergeValidPlaylistTracks(playlist, retry);
+                playlist.tracks = mergedTracks;
+                maxRetries--;
+            } else {
+                break;
             }
         }
-        throw new Error(`Could not send the specified request to ${path}. Status code: ${response.statusCode}`);
+        return playlist;
     }
 
-    protected async sendHttpsRequest(request: https.RequestOptions, data?: string): Promise<IIncomingMessage> {
-        return new Promise<IIncomingMessage>((resolve, reject) => {
-            const headers = request.headers || { };
-            request.headers = headers;
-            if (data) {
-                headers["Content-Type"] = "application/json";
-                headers["Content-Length"] = data.length;
+    private async getPlaylistInternal(id: string): Promise<IPlaylistDetail> {
+        const data = {
+            browseId: id,
+            browseEndpointContextSupportedConfigs: {
+                browseEndpointContextMusicConfig: {
+                    pageType: "MUSIC_PAGE_TYPE_PLAYLIST"
+                }
             }
-            const req = https.request(request, (resp: IIncomingMessage) => {
-                let body = "";
-                resp.on("data", (data) => {
-                    body += data;
-                });
-                resp.on("end", () => {
-                    resp.body = body;
-                    resolve(resp);
-                });
-            }).on("error", (error) => {
-                reject(error);
-            });
-            if (data) {
-                req.write(data);
-            }
-            req.end();
-        });
+        };
+        const response = await this.sendRequest("browse", data);
+        const playlist = this.playlistParser.parsePlaylistDetailResponse(response);
+        while (playlist.continuationToken) {
+            const continuation = await this.sendRequest("browse", data, `ctoken=${playlist.continuationToken}&continuation=${playlist.continuationToken}`);
+            this.playlistParser.parsePlaylistDetailContinuation(playlist, continuation);
+        }
+        return playlist;
     }
 }

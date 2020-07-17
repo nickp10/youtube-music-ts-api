@@ -1,4 +1,4 @@
-import { IAlbumDetail, IAlbumSummary, IPlaylistDetail, IPlaylistSummary } from "./interfaces-supplementary";
+import { IAlbumDetail, IAlbumSummary, IArtistSummary, IPlaylistDetail, IPlaylistSummary, ITrackDetail } from "./interfaces-supplementary";
 
 /**
  * Defines the main YouTube Music API object. Using this object, you can either choose to make calls as a guest or an
@@ -35,12 +35,11 @@ export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
     getLibraryAlbums(): Promise<IAlbumSummary[]>;
 
     /**
-     * Gets detailed information for a specific album.
+     * Gets all the artists in the user's library.
      * 
-     * @param id The ID of the album to get the detailed information for.
-     * @returns A promise that will yield the detailed information for a specific album.
+     * @returns A promise that will yield an array of all the artists in the user's library.
      */
-    getAlbum(id: string): Promise<IAlbumDetail>;
+    getLibraryArtists(): Promise<IArtistSummary[]>;
 
     /**
      * Gets all the playlists in the user's library.
@@ -48,6 +47,26 @@ export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
      * @returns A promise that will yield an array of all the playlists in the user's library.
      */
     getLibraryPlaylists(): Promise<IPlaylistSummary[]>;
+
+    /**
+     * Gets all the tracks in the user's library.
+     * 
+     * @returns A promise that will yield an array of all the tracks in the user's library.
+     */
+    getLibraryTracks(): Promise<ITrackDetail[]>;
+}
+
+/**
+ * Defines the YouTube Music APIs available to a guest.
+ */
+export interface IYouTubeMusicGuest {
+    /**
+     * Gets detailed information for a specific album.
+     * 
+     * @param id The ID of the album to get the detailed information for.
+     * @returns A promise that will yield the detailed information for a specific album.
+     */
+    getAlbum(id: string): Promise<IAlbumDetail>;
 
     /**
      * Gets detailed information for a specific playlist.
@@ -61,10 +80,4 @@ export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
      * @returns A promise that will yield the detailed information for a specific playlist.
      */
     getPlaylist(id: string, maxRetries?: number): Promise<IPlaylistDetail>;
-}
-
-/**
- * Defines the YouTube Music APIs available to a guest.
- */
-export interface IYouTubeMusicGuest {
 }

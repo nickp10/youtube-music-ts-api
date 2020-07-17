@@ -72,7 +72,9 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 
 * [getAlbum](#getalbum)
 * [getLibraryAlbums](#getlibraryalbums)
+* [getLibraryArtists](#getlibraryartists)
 * [getLibraryPlaylists](#getlibraryplaylists)
+* [getLibraryTracks](#getlibrarytracks)
 * [getPlaylist](#getplaylist)
 
 ## Methods
@@ -81,7 +83,9 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 
 ▸ **getAlbum**(`id`: string): *Promise‹[IAlbumDetail](#_interfaces_supplementary_ialbumdetailmd)›*
 
-*Defined in [interfaces-primary.ts:43](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L43)*
+*Inherited from [IYouTubeMusicAuthenticated](#_interfaces_primary_iyoutubemusicauthenticatedmd).[getAlbum](#getalbum)*
+
+*Defined in [interfaces-primary.ts:69](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L69)*
 
 Gets detailed information for a specific album.
 
@@ -111,11 +115,25 @@ A promise that will yield an array of all the albums in the user's library.
 
 ___
 
+###  getLibraryArtists
+
+▸ **getLibraryArtists**(): *Promise‹[IArtistSummary](#_interfaces_supplementary_iartistsummarymd)[]›*
+
+*Defined in [interfaces-primary.ts:42](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L42)*
+
+Gets all the artists in the user's library.
+
+**Returns:** *Promise‹[IArtistSummary](#_interfaces_supplementary_iartistsummarymd)[]›*
+
+A promise that will yield an array of all the artists in the user's library.
+
+___
+
 ###  getLibraryPlaylists
 
 ▸ **getLibraryPlaylists**(): *Promise‹[IPlaylistSummary](#_interfaces_supplementary_iplaylistsummarymd)[]›*
 
-*Defined in [interfaces-primary.ts:50](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L50)*
+*Defined in [interfaces-primary.ts:49](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L49)*
 
 Gets all the playlists in the user's library.
 
@@ -125,11 +143,27 @@ A promise that will yield an array of all the playlists in the user's library.
 
 ___
 
+###  getLibraryTracks
+
+▸ **getLibraryTracks**(): *Promise‹[ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[]›*
+
+*Defined in [interfaces-primary.ts:56](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L56)*
+
+Gets all the tracks in the user's library.
+
+**Returns:** *Promise‹[ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[]›*
+
+A promise that will yield an array of all the tracks in the user's library.
+
+___
+
 ###  getPlaylist
 
 ▸ **getPlaylist**(`id`: string, `maxRetries?`: number): *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
 
-*Defined in [interfaces-primary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L63)*
+*Inherited from [IYouTubeMusicAuthenticated](#_interfaces_primary_iyoutubemusicauthenticatedmd).[getPlaylist](#getplaylist)*
+
+*Defined in [interfaces-primary.ts:82](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L82)*
 
 Gets detailed information for a specific playlist.
 
@@ -157,6 +191,54 @@ Defines the YouTube Music APIs available to a guest.
 * **IYouTubeMusicGuest**
 
   ↳ [IYouTubeMusicAuthenticated](#_interfaces_primary_iyoutubemusicauthenticatedmd)
+
+## Index
+
+### Methods
+
+* [getAlbum](#getalbum)
+* [getPlaylist](#getplaylist)
+
+## Methods
+
+###  getAlbum
+
+▸ **getAlbum**(`id`: string): *Promise‹[IAlbumDetail](#_interfaces_supplementary_ialbumdetailmd)›*
+
+*Defined in [interfaces-primary.ts:69](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L69)*
+
+Gets detailed information for a specific album.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`id` | string | The ID of the album to get the detailed information for. |
+
+**Returns:** *Promise‹[IAlbumDetail](#_interfaces_supplementary_ialbumdetailmd)›*
+
+A promise that will yield the detailed information for a specific album.
+
+___
+
+###  getPlaylist
+
+▸ **getPlaylist**(`id`: string, `maxRetries?`: number): *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
+
+*Defined in [interfaces-primary.ts:82](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L82)*
+
+Gets detailed information for a specific playlist.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`id` | string | The ID of the playlist to get the detailed information for. |
+`maxRetries?` | number | An optional maximum number of retries to obtain the tracks. YouTube Music is incredibly buggy in that not all tracks will be returned in a single request. If the request is retried, you may get a different set of tracks in the response. If you retry enough times, you will eventually get all the tracks (a union operation is done internally between all the tracks returned from each individual request). |
+
+**Returns:** *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
+
+A promise that will yield the detailed information for a specific playlist.
 
 
 <a name="_interfaces_supplementary_ialbumdetailmd"></a>

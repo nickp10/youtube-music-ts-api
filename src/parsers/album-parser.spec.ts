@@ -4,7 +4,7 @@ import AlbumParser from "./album-parser";
 
 describe("AlbumParser", () => {
     describe("#parseAlbumsSummaryResponse()", () => {
-        it("should parse the playlists summary response", () => {
+        it("should parse the albums summary response", () => {
             // Arrange
             const target = new AlbumParser();
             const responseStr = fs.readFileSync("src-spec-data/albumsSummaryResponse.json", "utf-8");
