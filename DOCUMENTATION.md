@@ -70,14 +70,82 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 
 ### Methods
 
+* [addTracksToPlaylist](#addtrackstoplaylist)
+* [createPlaylist](#createplaylist)
+* [deletePlaylist](#deleteplaylist)
 * [getAlbum](#getalbum)
 * [getLibraryAlbums](#getlibraryalbums)
 * [getLibraryArtists](#getlibraryartists)
 * [getLibraryPlaylists](#getlibraryplaylists)
 * [getLibraryTracks](#getlibrarytracks)
 * [getPlaylist](#getplaylist)
+* [removeTracksFromPlaylist](#removetracksfromplaylist)
 
 ## Methods
+
+###  addTracksToPlaylist
+
+▸ **addTracksToPlaylist**(`playlistId`: string, ...`tracks`: [ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[]): *Promise‹boolean›*
+
+*Defined in [interfaces-primary.ts:37](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L37)*
+
+Adds the tracks to the specified playlist.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`playlistId` | string | The ID of the playlist to add the tracks to. |
+`...tracks` | [ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[] | The array of tracks to add to the playlist. |
+
+**Returns:** *Promise‹boolean›*
+
+A promise that will yield whether or not the operation was successful.
+
+___
+
+###  createPlaylist
+
+▸ **createPlaylist**(`name`: string, `description?`: string, `privacy?`: string, `sourcePlaylistId?`: string): *Promise‹[IPlaylistSummary](#_interfaces_supplementary_iplaylistsummarymd)›*
+
+*Defined in [interfaces-primary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L48)*
+
+Creates a playlist in the user's library.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`name` | string | The name of the playlist to create. |
+`description?` | string | An optional description for the playlist. |
+`privacy?` | string | An optional privacy level for the playlist (either PUBLIC, PRIVATE, or UNLISTED). |
+`sourcePlaylistId?` | string | An optional playlist ID to copy the initial set of tracks from. |
+
+**Returns:** *Promise‹[IPlaylistSummary](#_interfaces_supplementary_iplaylistsummarymd)›*
+
+A promise that will yield the playlist with its ID.
+
+___
+
+###  deletePlaylist
+
+▸ **deletePlaylist**(`playlistId`: string): *Promise‹boolean›*
+
+*Defined in [interfaces-primary.ts:56](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L56)*
+
+Deletes a playlist from the user's library.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`playlistId` | string | The ID of the playlist to delete. |
+
+**Returns:** *Promise‹boolean›*
+
+A promise that will yield whether or not the operation was successful.
+
+___
 
 ###  getAlbum
 
@@ -85,7 +153,7 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 
 *Inherited from [IYouTubeMusicAuthenticated](#_interfaces_primary_iyoutubemusicauthenticatedmd).[getAlbum](#getalbum)*
 
-*Defined in [interfaces-primary.ts:69](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L69)*
+*Defined in [interfaces-primary.ts:106](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L106)*
 
 Gets detailed information for a specific album.
 
@@ -105,7 +173,7 @@ ___
 
 ▸ **getLibraryAlbums**(): *Promise‹[IAlbumSummary](#_interfaces_supplementary_ialbumsummarymd)[]›*
 
-*Defined in [interfaces-primary.ts:35](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L35)*
+*Defined in [interfaces-primary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L63)*
 
 Gets all the albums in the user's library.
 
@@ -119,7 +187,7 @@ ___
 
 ▸ **getLibraryArtists**(): *Promise‹[IArtistSummary](#_interfaces_supplementary_iartistsummarymd)[]›*
 
-*Defined in [interfaces-primary.ts:42](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L42)*
+*Defined in [interfaces-primary.ts:70](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L70)*
 
 Gets all the artists in the user's library.
 
@@ -133,7 +201,7 @@ ___
 
 ▸ **getLibraryPlaylists**(): *Promise‹[IPlaylistSummary](#_interfaces_supplementary_iplaylistsummarymd)[]›*
 
-*Defined in [interfaces-primary.ts:49](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L49)*
+*Defined in [interfaces-primary.ts:77](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L77)*
 
 Gets all the playlists in the user's library.
 
@@ -147,7 +215,7 @@ ___
 
 ▸ **getLibraryTracks**(): *Promise‹[ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[]›*
 
-*Defined in [interfaces-primary.ts:56](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L56)*
+*Defined in [interfaces-primary.ts:84](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L84)*
 
 Gets all the tracks in the user's library.
 
@@ -163,7 +231,7 @@ ___
 
 *Inherited from [IYouTubeMusicAuthenticated](#_interfaces_primary_iyoutubemusicauthenticatedmd).[getPlaylist](#getplaylist)*
 
-*Defined in [interfaces-primary.ts:82](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L82)*
+*Defined in [interfaces-primary.ts:119](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L119)*
 
 Gets detailed information for a specific playlist.
 
@@ -177,6 +245,27 @@ Name | Type | Description |
 **Returns:** *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
 
 A promise that will yield the detailed information for a specific playlist.
+
+___
+
+###  removeTracksFromPlaylist
+
+▸ **removeTracksFromPlaylist**(`playlistId`: string, ...`tracks`: [ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[]): *Promise‹boolean›*
+
+*Defined in [interfaces-primary.ts:93](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L93)*
+
+Removes the tracks from the specified playlist.
+
+**Parameters:**
+
+Name | Type | Description |
+------ | ------ | ------ |
+`playlistId` | string | The ID of the playlist to remove the tracks from. |
+`...tracks` | [ITrackDetail](#_interfaces_supplementary_itrackdetailmd)[] | The array of tracks to remove from the playlist. |
+
+**Returns:** *Promise‹boolean›*
+
+A promise that will yield whether or not the operation was successful.
 
 
 <a name="_interfaces_primary_iyoutubemusicguestmd"></a>
@@ -205,7 +294,7 @@ Defines the YouTube Music APIs available to a guest.
 
 ▸ **getAlbum**(`id`: string): *Promise‹[IAlbumDetail](#_interfaces_supplementary_ialbumdetailmd)›*
 
-*Defined in [interfaces-primary.ts:69](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L69)*
+*Defined in [interfaces-primary.ts:106](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L106)*
 
 Gets detailed information for a specific album.
 
@@ -225,7 +314,7 @@ ___
 
 ▸ **getPlaylist**(`id`: string, `maxRetries?`: number): *Promise‹[IPlaylistDetail](#_interfaces_supplementary_iplaylistdetailmd)›*
 
-*Defined in [interfaces-primary.ts:82](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L82)*
+*Defined in [interfaces-primary.ts:119](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L119)*
 
 Gets detailed information for a specific playlist.
 
@@ -538,7 +627,7 @@ ___
 
 *Defined in [interfaces-supplementary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L123)*
 
-The privacy level of the playlist.
+The privacy level of the playlist. This value will be PUBLIC, PRIVATE, or UNLISTED.
 
 ___
 
@@ -617,6 +706,7 @@ Defines the details for a track.
 ### Properties
 
 * [album](#optional-album)
+* [alternateId](#optional-alternateid)
 * [artists](#optional-artists)
 * [duration](#optional-duration)
 * [durationMillis](#optional-durationmillis)
@@ -630,9 +720,20 @@ Defines the details for a track.
 
 • **album**? : *[IAlbumSummary](#_interfaces_supplementary_ialbumsummarymd)*
 
-*Defined in [interfaces-supplementary.ts:173](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L173)*
+*Defined in [interfaces-supplementary.ts:179](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L179)*
 
 The album the track is from.
+
+___
+
+### `Optional` alternateId
+
+• **alternateId**? : *string*
+
+*Defined in [interfaces-supplementary.ts:164](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L164)*
+
+An alternate ID of the track. YouTube internally refers to this value as the setVideoId. This ID
+is used in combination with the standard ID in order to remove tracks from playlists.
 
 ___
 
@@ -640,7 +741,7 @@ ___
 
 • **artists**? : *[IArtistSummary](#_interfaces_supplementary_iartistsummarymd)[]*
 
-*Defined in [interfaces-supplementary.ts:168](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L168)*
+*Defined in [interfaces-supplementary.ts:174](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L174)*
 
 The artist(s) that compose the track.
 
@@ -650,7 +751,7 @@ ___
 
 • **duration**? : *string*
 
-*Defined in [interfaces-supplementary.ts:178](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L178)*
+*Defined in [interfaces-supplementary.ts:184](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L184)*
 
 The duration of the track as a readable string.
 
@@ -660,7 +761,7 @@ ___
 
 • **durationMillis**? : *number*
 
-*Defined in [interfaces-supplementary.ts:183](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L183)*
+*Defined in [interfaces-supplementary.ts:189](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L189)*
 
 The duration of the track in milliseconds.
 
@@ -680,7 +781,7 @@ ___
 
 • **title**? : *string*
 
-*Defined in [interfaces-supplementary.ts:163](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L163)*
+*Defined in [interfaces-supplementary.ts:169](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L169)*
 
 The title of the track.
 
@@ -690,6 +791,6 @@ ___
 
 • **trackNumber**? : *number*
 
-*Defined in [interfaces-supplementary.ts:188](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L188)*
+*Defined in [interfaces-supplementary.ts:194](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L194)*
 
 The track number within an album.
