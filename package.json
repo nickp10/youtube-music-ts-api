@@ -8,6 +8,14 @@
     "build/exports.js",
     "build/exports.d.ts"
   ],
+  "keywords": [
+    "youtube music api",
+    "youtube music",
+    "youtube",
+    "music",
+    "api",
+    "typescript"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nickp10/youtube-music-ts-api.git"

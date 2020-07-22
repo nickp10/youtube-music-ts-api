@@ -46,6 +46,7 @@ export default class TrackParser extends BaseParser {
             this.traverse(trackObj, "fixedColumns", "0", "musicResponsiveListItemFixedColumnRenderer", "text", "runs", "0", "text");
         return {
             id: this.traverse(trackObj, "overlay", "musicItemThumbnailOverlayRenderer", "content", "musicPlayButtonRenderer", "playNavigationEndpoint", "watchEndpoint", "videoId"),
+            alternateId: this.traverse(trackObj, "playlistItemData", "playlistSetVideoId"),
             title: this.traverse(trackObj, "flexColumns", "0", "musicResponsiveListItemFlexColumnRenderer", "text", "runs", "0", "text"),
             artists: artists,
             album: album,
@@ -82,5 +83,20 @@ export default class TrackParser extends BaseParser {
             tracksDetail.tracks.push.apply(tracksDetail.tracks, tracks);
         }
         tracksDetail.continuationToken = this.traverse(response, "continuationContents", "musicShelfContinuation", "continuations", "0", "nextContinuationData", "continuation");
+    }
+
+    parseAlbumTrackDetails(trackObjs: any[], artists: IArtistSummary[], album: IAlbumSummary): ITrackDetail[] {
+        const tracks: ITrackDetail[] = [];
+        for (const trackObj of trackObjs) {
+            tracks.push({
+                id: this.traverse(trackObj, "videoId"),
+                title: this.traverse(trackObj, "title"),
+                artists: artists,
+                album: album,
+                durationMillis: parseInt(this.traverse(trackObj, "lengthMs")),
+                trackNumber: parseInt(this.traverse(trackObj, "albumTrackIndex"))
+            });
+        }
+        return tracks;
     }
 }

@@ -15,6 +15,7 @@ describe("TrackParser", () => {
 
             // Assert
             assert.strictEqual(trackDetail.id, "hoK3H43zfNU");
+            assert.strictEqual(trackDetail.alternateId, "56B44F6D10557CC6");
             assert.strictEqual(trackDetail.title, "Clockin' w's");
             assert.strictEqual(trackDetail.album.id, "MPREb_1g3L3rlCg6e");
             assert.strictEqual(trackDetail.album.name, "Clockin' w's");

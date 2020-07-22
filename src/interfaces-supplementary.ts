@@ -118,7 +118,7 @@ export interface IPlaylistDetail {
     count?: number;
 
     /**
-     * The privacy level of the playlist.
+     * The privacy level of the playlist. This value will be PUBLIC, PRIVATE, or UNLISTED.
      */
     privacy?: string;
 
@@ -156,6 +156,12 @@ export interface ITrackDetail {
      * The ID of the track.
      */
     id?: string;
+
+    /**
+     * An alternate ID of the track. YouTube internally refers to this value as the setVideoId. This ID
+     * is used in combination with the standard ID in order to remove tracks from playlists.
+     */
+    alternateId?: string;
 
     /**
      * The title of the track.

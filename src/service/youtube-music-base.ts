@@ -59,6 +59,7 @@ export default class YouTubeMusicBase {
         return new Promise<IIncomingMessage>((resolve, reject) => {
             const headers = request.headers || { };
             request.headers = headers;
+            request.timeout = 60000; // 60 seconds
             if (data) {
                 headers["Content-Type"] = "application/json";
                 headers["Content-Length"] = data.length;

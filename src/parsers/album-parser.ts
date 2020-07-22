@@ -1,9 +1,13 @@
 import BaseParser from "./base-parser";
-import { IAlbumDetail, IAlbumSummary, IArtistSummary, ITrackDetail } from "../interfaces-supplementary";
+import TrackParser from "./track-parser";
+import { IAlbumDetail, IAlbumSummary, IArtistSummary } from "../interfaces-supplementary";
 
 export default class AlbumParser extends BaseParser {
+    private trackParser: TrackParser;
+
     constructor() {
         super();
+        this.trackParser = new TrackParser();
     }
 
     parseAlbumsSummaryResponse(response: any): IAlbumSummary[] {
@@ -77,7 +81,7 @@ export default class AlbumParser extends BaseParser {
                 name: this.traverse(albumObj, "title")
             };
             const artists = this.parseAlbumDetailArtists(artistObjs);
-            const tracks = this.parseAlbumDetailTracks(trackObjs, artists, albumSummary);
+            const tracks = this.trackParser.parseAlbumTrackDetails(trackObjs, artists, albumSummary);
             return {
                 id: albumSummary.id,
                 name: albumSummary.name,
@@ -103,20 +107,5 @@ export default class AlbumParser extends BaseParser {
             });
         }
         return artists;
-    }
-
-    parseAlbumDetailTracks(trackObjs: any[], artists: IArtistSummary[], album: IAlbumSummary): ITrackDetail[] {
-        const tracks: ITrackDetail[] = [];
-        for (const trackObj of trackObjs) {
-            tracks.push({
-                id: this.traverse(trackObj, "videoId"),
-                title: this.traverse(trackObj, "title"),
-                artists: artists,
-                album: album,
-                durationMillis: parseInt(this.traverse(trackObj, "lengthMs")),
-                trackNumber: parseInt(this.traverse(trackObj, "albumTrackIndex"))
-            })
-        }
-        return tracks;
     }
 }

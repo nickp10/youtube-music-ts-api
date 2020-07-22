@@ -76,4 +76,63 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         }
         return tracksDetailResponse.tracks;
     }
+
+    async createPlaylist(name: string, description?: string, privacy?: string, sourcePlaylistId?: string): Promise<IPlaylistSummary> {
+        const response = await this.sendRequest("playlist/create", {
+            title: name,
+            description: description,
+            privacyStatus: privacy || 'PRIVATE',
+            sourcePlaylistId: sourcePlaylistId
+        });
+        if (!response || !response.playlistId) {
+            return undefined;
+        }
+        return {
+            id: response.playlistId,
+            name: name,
+            count: 0
+        };
+    }
+
+    async deletePlaylist(playlistId: string): Promise<boolean> {
+        const response = await this.sendRequest("playlist/delete", {
+            playlistId: playlistId
+        });
+        return response.status === "STATUS_SUCCEEDED";
+    }
+
+    async addTracksToPlaylist(playlistId: string, ...tracks: ITrackDetail[]): Promise<boolean> {
+        const response = await this.sendRequest("browse/edit_playlist", {
+            playlistId: playlistId,
+            actions: tracks.map(track => {
+                return {
+                    action: "ACTION_ADD_VIDEO",
+                    addedVideoId: track.id
+                };
+            })
+        });
+        return response.status === "STATUS_SUCCEEDED";
+    }
+
+    async removeTracksFromPlaylist(playlistId: string, ...tracks: ITrackDetail[]): Promise<boolean> {
+        const actions: any[] = [];
+        for (const track of tracks) {
+            if (!track.id) {
+                throw new Error("Track ID is missing. Ensure you have both the ID and the Alternate ID.");
+            } else if (!track.alternateId) {
+                throw new Error("Track Alternate ID is missing. Ensure you have both the ID and the Alternate ID.")
+            } else {
+                actions.push({
+                    action: "ACTION_REMOVE_VIDEO",
+                    removedVideoId: track.id,
+                    setVideoId: track.alternateId
+                });
+            }
+        }
+        const response = await this.sendRequest("browse/edit_playlist", {
+            playlistId: playlistId,
+            actions: actions
+        });
+        return response.status === "STATUS_SUCCEEDED";
+    }
 }
