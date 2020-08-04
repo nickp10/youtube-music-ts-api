@@ -82,7 +82,7 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
             title: name,
             description: description,
             privacyStatus: privacy || 'PRIVATE',
-            sourcePlaylistId: sourcePlaylistId
+            sourcePlaylistId: this.playlistIdTrim(sourcePlaylistId)
         });
         if (!response || !response.playlistId) {
             return undefined;
@@ -96,14 +96,14 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
 
     async deletePlaylist(playlistId: string): Promise<boolean> {
         const response = await this.sendRequest("playlist/delete", {
-            playlistId: playlistId
+            playlistId: this.playlistIdTrim(playlistId)
         });
         return response.status === "STATUS_SUCCEEDED";
     }
 
     async addTracksToPlaylist(playlistId: string, ...tracks: ITrackDetail[]): Promise<boolean> {
         const response = await this.sendRequest("browse/edit_playlist", {
-            playlistId: playlistId,
+            playlistId: this.playlistIdTrim(playlistId),
             actions: tracks.map(track => {
                 return {
                     action: "ACTION_ADD_VIDEO",
@@ -130,7 +130,7 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
             }
         }
         const response = await this.sendRequest("browse/edit_playlist", {
-            playlistId: playlistId,
+            playlistId: this.playlistIdTrim(playlistId),
             actions: actions
         });
         return response.status === "STATUS_SUCCEEDED";

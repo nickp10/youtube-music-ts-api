@@ -41,7 +41,7 @@ export default class YouTubeMusicGuest extends YouTubeMusicBase implements IYouT
 
     private async getPlaylistInternal(id: string): Promise<IPlaylistDetail> {
         const data = {
-            browseId: id,
+            browseId: this.playlistIdPad(id),
             browseEndpointContextSupportedConfigs: {
                 browseEndpointContextMusicConfig: {
                     pageType: "MUSIC_PAGE_TYPE_PLAYLIST"

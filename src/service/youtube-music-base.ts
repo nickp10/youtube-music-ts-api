@@ -82,4 +82,18 @@ export default class YouTubeMusicBase {
             req.end();
         });
     }
+
+    protected playlistIdTrim(playlistId: string): string {
+        if (playlistId && playlistId.toUpperCase().startsWith("VL")) {
+            return playlistId.substr(2);
+        }
+        return playlistId;
+    }
+
+    protected playlistIdPad(playlistId: string): string {
+        if (playlistId && !playlistId.toUpperCase().startsWith("VL")) {
+            return "VL" + playlistId;
+        }
+        return playlistId;
+    }
 }
