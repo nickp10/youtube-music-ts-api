@@ -10,14 +10,16 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
     private apisid: string;
     private sapisid: string;
     private secure3psid: string;
+    private secure3papisid: string;
 
-    constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string) {
+    constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string, secure3papisid: string) {
         super();
         this.hsid = hsid;
         this.ssid = ssid;
         this.apisid = apisid;
         this.sapisid = sapisid;
         this.secure3psid = secure3psid;
+        this.secure3papisid = secure3papisid;
     }
 
     protected generateHeaders(): http.OutgoingHttpHeaders {
@@ -30,13 +32,13 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
 
     private generateAuthorization(): string {
         let time = new Date().getTime();
-        const input = `${time} ${this.sapisid} ${this.origin}`;
+        const input = `${time} ${this.secure3papisid} ${this.origin}`;
         const digest = sha1(input);
         return `SAPISIDHASH ${time}_${digest}`;
     }
 
     private generateCookie(): string {
-        return `HSID=${this.hsid}; SSID=${this.ssid}; APISID=${this.apisid}; SAPISID=${this.sapisid}; __Secure-3PSID=${this.secure3psid}`;
+        return `HSID=${this.hsid}; SSID=${this.ssid}; APISID=${this.apisid}; SAPISID=${this.sapisid}; __Secure-3PSID=${this.secure3psid}; __Secure-3PAPISID=${this.secure3papisid}`;
     }
 
     async getLibraryAlbums(): Promise<IAlbumSummary[]> {
