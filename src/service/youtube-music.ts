@@ -16,7 +16,7 @@ export default class YouTubeMusic implements IYouTubeMusic {
      * @param authUser X-Goog-AuthUser header value
      * @returns A promise that will yield authenticated access to the YouTube Music API.
      */
-    async authenticate(cookiesStr: string, authUser: Number = 0): Promise<IYouTubeMusicAuthenticated> {
+    async authenticate(cookiesStr: string, authUser: number = 0): Promise<IYouTubeMusicAuthenticated> {
         if (!cookiesStr) {
             throw new Error("The specific cookie string is missing");
         }

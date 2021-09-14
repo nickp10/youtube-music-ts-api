@@ -11,9 +11,9 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
     private sapisid: string;
     private secure3psid: string;
     private secure3papisid: string;
-    private authUser: Number;
+    private authUser: number;
 
-    constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string, secure3papisid: string, authUser: Number) {
+    constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string, secure3papisid: string, authUser: number) {
         super();
         this.hsid = hsid;
         this.ssid = ssid;
