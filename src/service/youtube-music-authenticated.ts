@@ -11,8 +11,9 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
     private sapisid: string;
     private secure3psid: string;
     private secure3papisid: string;
+    private authUser: Number;
 
-    constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string, secure3papisid: string) {
+    constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string, secure3papisid: string, authUser: Number) {
         super();
         this.hsid = hsid;
         this.ssid = ssid;
@@ -20,13 +21,15 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         this.sapisid = sapisid;
         this.secure3psid = secure3psid;
         this.secure3papisid = secure3papisid;
+        this.authUser = authUser;
     }
 
     protected generateHeaders(): http.OutgoingHttpHeaders {
         return {
             ...super.generateHeaders(),
             "Authorization": this.generateAuthorization(),
-            "Cookie": this.generateCookie()
+            "Cookie": this.generateCookie(),
+            "X-Goog-AuthUser": this.authUser
         };
     }
 
