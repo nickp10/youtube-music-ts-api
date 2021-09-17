@@ -13,9 +13,10 @@ export default class YouTubeMusic implements IYouTubeMusic {
      * @param cookiesStr The cookie string of a valid logged in user. The minimum required cookie values needed are the HSID, SSID, APISID,
      * SAPISID, __Secure-3PSID, and __Secure-3PAPISID. To obtain this cookie value, log into https://music.youtube.com as a user and use
      * your browser's developer tools to obtain the "cookie" value sent as a request header. Extra values in the cookie will be ignored.
+     * @param authUser X-Goog-AuthUser header value
      * @returns A promise that will yield authenticated access to the YouTube Music API.
      */
-    async authenticate(cookiesStr: string): Promise<IYouTubeMusicAuthenticated> {
+    async authenticate(cookiesStr: string, authUser: number = 0): Promise<IYouTubeMusicAuthenticated> {
         if (!cookiesStr) {
             throw new Error("The specific cookie string is missing");
         }
@@ -36,7 +37,8 @@ export default class YouTubeMusic implements IYouTubeMusic {
             cookies.get("APISID"),
             cookies.get("SAPISID"),
             cookies.get("__Secure-3PSID"),
-            cookies.get("__Secure-3PAPISID")
+            cookies.get("__Secure-3PAPISID"),
+            authUser
         );
     }
 

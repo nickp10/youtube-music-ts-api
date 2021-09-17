@@ -23,7 +23,7 @@ authenticated user. Not all APIs are available as a guest, so it is preferred to
 
 ### authenticate
 
-▸ **authenticate**(`cookiesStr`: *string*): *Promise*<[*IYouTubeMusicAuthenticated*](#interfaces-primaryiyoutubemusicauthenticatedmd)\>
+▸ **authenticate**(`cookiesStr`: *string*, `authUser`: *number*): *Promise*<[*IYouTubeMusicAuthenticated*](#interfaces-primaryiyoutubemusicauthenticatedmd)\>
 
 Authenticates the user with the YouTube Music API. This function overload requies the cookie string of a valid logged in user.
 
@@ -32,6 +32,7 @@ Authenticates the user with the YouTube Music API. This function overload requie
 Name | Type | Description |
 ------ | ------ | ------ |
 `cookiesStr` | *string* | The cookie string of a valid logged in user. The minimum required cookie values needed are the HSID, SSID, APISID, SAPISID, __Secure-3PSID, and __Secure-3PAPISID. To obtain this cookie value, log into https://music.youtube.com as a user and use your browser's developer tools to obtain the "cookie" value sent as a request header. Extra values in the cookie will be ignored.   |
+`authUser?` | *Number* | An optional param for auth user index (more than 1 account connected).    |
 
 **Returns:** *Promise*<[*IYouTubeMusicAuthenticated*](#interfaces-primaryiyoutubemusicauthenticatedmd)\>
 
