@@ -14,11 +14,11 @@ describe("PlaylistParser", () => {
             const actual = target.parsePlaylistsSummaryResponse(response);
 
             // Assert
-            assert.strictEqual(actual.length, 1);
-            const actualFirst = actual[0];
-            assert.strictEqual(actualFirst.id, "VLPLr9RRFMeuGBSLnDCSxaNNhnQEtxnoiaxj");
-            assert.strictEqual(actualFirst.name, "Recents");
-            assert.strictEqual(actualFirst.count, 3);
+            assert.strictEqual(actual.length, 11);
+            const actualRecents = actual.find(a => a.name === "Recents");
+            assert.strictEqual(actualRecents.id, "VLPLr9RRFMeuGBR-nYuU6hsV_QKTvOuq_dPx");
+            assert.strictEqual(actualRecents.name, "Recents");
+            assert.strictEqual(actualRecents.count, 38);
         });
     });
 

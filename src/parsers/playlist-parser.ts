@@ -13,7 +13,7 @@ export default class PlaylistParser extends BaseParser {
 
     parsePlaylistsSummaryResponse(response: any): IPlaylistSummary[] {
         const playlists: IPlaylistSummary[] = [];
-        const items: any[] = this.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "*", "itemSectionRenderer", "contents", "0", "gridRenderer", "items");
+        const items: any[] = this.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "gridRenderer", "items");
         if (Array.isArray(items)) {
             // Skip playlist at index 0 since that's the "New Playlist" playlist
             for (let i = 1; i < items.length; i++) {
