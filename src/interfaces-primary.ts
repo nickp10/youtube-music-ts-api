@@ -11,9 +11,10 @@ export interface IYouTubeMusic {
      * @param cookiesStr The cookie string of a valid logged in user. The minimum required cookie values needed are the HSID, SSID, APISID,
      * SAPISID, __Secure-3PSID, and __Secure-3PAPISID. To obtain this cookie value, log into https://music.youtube.com as a user and use
      * your browser's developer tools to obtain the "cookie" value sent as a request header. Extra values in the cookie will be ignored.
+     * @param authUser X-Goog-AuthUser header value
      * @returns A promise that will yield authenticated access to the YouTube Music API.
      */
-    authenticate(cookiesStr: string): Promise<IYouTubeMusicAuthenticated>;
+    authenticate(cookiesStr: string, authUser: number): Promise<IYouTubeMusicAuthenticated>;
 
     /**
      * Provides guest access to the YouTube Music API. Only non-restrictive APIs (such as public playlists) are available to guests.
