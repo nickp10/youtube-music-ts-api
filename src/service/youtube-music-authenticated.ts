@@ -1,7 +1,13 @@
 import * as http from "http";
 import sha1 from "sha1";
 import YouTubeMusicGuest from "./youtube-music-guest";
-import { IAlbumSummary, IArtistSummary, IPlaylistSummary, ITrackDetail } from "../interfaces-supplementary";
+import {
+    IAlbumSummary,
+    IArtistSummary,
+    IPlaylistDetail,
+    IPlaylistSummary,
+    ITrackDetail
+} from "../interfaces-supplementary";
 import { IYouTubeMusicAuthenticated} from "../interfaces-primary";
 
 export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest implements IYouTubeMusicAuthenticated {
@@ -80,6 +86,25 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
             this.trackParser.parseTracksDetailContinuation(tracksDetailResponse, continuation);
         }
         return tracksDetailResponse.tracks;
+    }
+
+    async getLibraryHistory(): Promise<IPlaylistDetail> {
+        const data = {
+            browseId: "FEmusic_history",
+        };
+        const response = await this.sendRequest("browse", data);
+
+        // cannot use parsePlaylistDetailResponse because last slice is different IE musicPlaylistShelfRenderer !== musicShelfRenderer
+        const recentPlays = this.playlistParser.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicShelfRenderer");
+
+        return {
+            id: 'FEmusic_history', // no real id for this playlist
+            name: 'History',
+            description: 'Recently played music in reverse chronological order',
+            privacy: 'PRIVATE',
+            count: recentPlays.contents.length,
+            tracks: this.trackParser.parseTrackDetails(recentPlays.contents)
+        }
     }
 
     async createPlaylist(name: string, description?: string, privacy?: string, sourcePlaylistId?: string): Promise<IPlaylistSummary> {

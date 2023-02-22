@@ -85,6 +85,13 @@ export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
     getLibraryTracks(): Promise<ITrackDetail[]>;
 
     /**
+     * Gets recently played tracks, in reverse chronological order, from the user's library
+     *
+     * @returns A promise that will yield a playlist with detailed information on a recently played tracks.
+     */
+    getLibraryHistory(): Promise<IPlaylistDetail>
+
+    /**
      * Removes the tracks from the specified playlist.
      *
      * @param playlistId The ID of the playlist to remove the tracks from.
