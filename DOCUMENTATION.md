@@ -83,6 +83,7 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 - [getAlbum](#getalbum)
 - [getLibraryAlbums](#getlibraryalbums)
 - [getLibraryArtists](#getlibraryartists)
+- [getLibraryHistory](#getlibraryhistory)
 - [getLibraryPlaylists](#getlibraryplaylists)
 - [getLibraryTracks](#getlibrarytracks)
 - [getPlaylist](#getplaylist)
@@ -190,7 +191,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-[interfaces-primary.ts:107](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L107)
+[interfaces-primary.ts:114](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L114)
 
 ___
 
@@ -227,6 +228,24 @@ A promise that will yield an array of all the artists in the user's library.
 #### Defined in
 
 [interfaces-primary.ts:71](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L71)
+
+___
+
+### getLibraryHistory
+
+▸ **getLibraryHistory**(): `Promise`<[`IPlaylistDetail`](#interfaces_supplementaryiplaylistdetailmd)\>
+
+Gets recently played tracks, in reverse chronological order, from the user's library
+
+#### Returns
+
+`Promise`<[`IPlaylistDetail`](#interfaces_supplementaryiplaylistdetailmd)\>
+
+A promise that will yield a playlist with detailed information on a recently played tracks.
+
+#### Defined in
+
+[interfaces-primary.ts:92](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L92)
 
 ___
 
@@ -291,7 +310,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-[interfaces-primary.ts:120](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L120)
+[interfaces-primary.ts:127](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L127)
 
 ___
 
@@ -316,7 +335,7 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
-[interfaces-primary.ts:94](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L94)
+[interfaces-primary.ts:101](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L101)
 
 
 <a name="interfaces_primaryiyoutubemusicguestmd"></a>
@@ -362,7 +381,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-[interfaces-primary.ts:107](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L107)
+[interfaces-primary.ts:114](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L114)
 
 ___
 
@@ -387,7 +406,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-[interfaces-primary.ts:120](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L120)
+[interfaces-primary.ts:127](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L127)
 
 
 <a name="interfaces_supplementaryialbumdetailmd"></a>
