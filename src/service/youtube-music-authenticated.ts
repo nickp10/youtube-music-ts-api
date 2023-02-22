@@ -103,8 +103,7 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
             description: 'Recently played music in reverse chronological order',
             privacy: 'PRIVATE',
             count: recentPlays.contents.length,
-            tracks: this.trackParser.parseTrackDetails(recentPlays.contents),
-            continuationToken: undefined
+            tracks: this.trackParser.parseTrackDetails(recentPlays.contents)
         }
     }
 
