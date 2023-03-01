@@ -92,6 +92,16 @@ export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
     getLibraryHistory(): Promise<IPlaylistDetail>
 
     /**
+     * Moves the specified track within the playlist.
+     *
+     * @param playlistId The ID of the playlist to move the track within.
+     * @param trackToMove The track that should be moved.
+     * @param trackToMoveBefore An optional track to move the track before. If unspecified, the track will be moved to the end of the playlist.
+     * @returns A promise that will yield whether or not the operation was successful.
+     */
+    moveTrackWithinPlaylist(playlistId: string, trackToMove: ITrackDetail, trackToMoveBefore?: ITrackDetail): Promise<boolean>;
+
+    /**
      * Removes the tracks from the specified playlist.
      *
      * @param playlistId The ID of the playlist to remove the tracks from.

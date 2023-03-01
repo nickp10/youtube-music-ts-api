@@ -87,6 +87,7 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 - [getLibraryPlaylists](#getlibraryplaylists)
 - [getLibraryTracks](#getlibrarytracks)
 - [getPlaylist](#getplaylist)
+- [moveTrackWithinPlaylist](#movetrackwithinplaylist)
 - [removeTracksFromPlaylist](#removetracksfromplaylist)
 
 ## Methods
@@ -191,7 +192,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-[interfaces-primary.ts:114](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L114)
+[interfaces-primary.ts:124](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L124)
 
 ___
 
@@ -310,7 +311,33 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-[interfaces-primary.ts:127](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L127)
+[interfaces-primary.ts:137](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L137)
+
+___
+
+### moveTrackWithinPlaylist
+
+▸ **moveTrackWithinPlaylist**(`playlistId`, `trackToMove`, `trackToMoveBefore?`): `Promise`<`boolean`\>
+
+Moves the specified track within the playlist.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `playlistId` | `string` | The ID of the playlist to move the track within. |
+| `trackToMove` | [`ITrackDetail`](#interfaces_supplementaryitrackdetailmd) | The track that should be moved. |
+| `trackToMoveBefore?` | [`ITrackDetail`](#interfaces_supplementaryitrackdetailmd) | An optional track to move the track before. If unspecified, the track will be moved to the end of the playlist. |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+A promise that will yield whether or not the operation was successful.
+
+#### Defined in
+
+[interfaces-primary.ts:102](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L102)
 
 ___
 
@@ -335,7 +362,7 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
-[interfaces-primary.ts:101](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L101)
+[interfaces-primary.ts:111](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L111)
 
 
 <a name="interfaces_primaryiyoutubemusicguestmd"></a>
@@ -381,7 +408,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-[interfaces-primary.ts:114](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L114)
+[interfaces-primary.ts:124](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L124)
 
 ___
 
@@ -406,7 +433,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-[interfaces-primary.ts:127](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L127)
+[interfaces-primary.ts:137](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L137)
 
 
 <a name="interfaces_supplementaryialbumdetailmd"></a>

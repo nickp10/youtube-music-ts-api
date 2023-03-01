@@ -165,4 +165,22 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         });
         return response.status === "STATUS_SUCCEEDED";
     }
+
+    async moveTrackWithinPlaylist(playlistId: string, trackToMove: ITrackDetail, trackToMoveBefore?: ITrackDetail): Promise<boolean> {
+        const actions: any[] = [];
+        if (!trackToMove || !trackToMove.alternateId) {
+            throw new Error("The track being moved is missing. Ensure you have specified a track to move.");
+        } else {
+            actions.push({
+                action: "ACTION_MOVE_VIDEO_BEFORE",
+                movedSetVideoIdSuccessor: trackToMoveBefore ? trackToMoveBefore.alternateId : undefined,
+                setVideoId: trackToMove.alternateId
+            });
+        }
+        const response = await this.sendRequest("browse/edit_playlist", {
+            playlistId: this.playlistIdTrim(playlistId),
+            actions: actions
+        });
+        return response.status === "STATUS_SUCCEEDED";
+    }
 }
