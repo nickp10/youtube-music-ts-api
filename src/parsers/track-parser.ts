@@ -20,14 +20,22 @@ export default class TrackParser extends BaseParser {
     }
 
     parseTrackDetail(trackObj: any): ITrackDetail {
-        const artists: IArtistSummary[] = [];
+        const allArtists: IArtistSummary[] = [];
+        const artistsWithIds: IArtistSummary[] = [];
         const artistsObj = this.traverse(trackObj, "flexColumns", "1", "musicResponsiveListItemFlexColumnRenderer", "text", "runs");
         if (Array.isArray(artistsObj)) {
             for (const artistObj of artistsObj) {
+                const artistId = this.traverse(artistObj, "navigationEndpoint", "browseEndpoint", "browseId");
                 const artistName = this.traverse(artistObj, "text");
                 if (artistName) {
-                    artists.push({
-                        id: this.traverse(artistObj, "navigationEndpoint", "browseEndpoint", "browseId"),
+                    if (artistId) {
+                        artistsWithIds.push({
+                            id: artistId,
+                            name: artistName
+                        });
+                    }
+                    allArtists.push({
+                        id: artistId,
                         name: artistName
                     });
                 }
@@ -48,7 +56,7 @@ export default class TrackParser extends BaseParser {
             id: this.traverse(trackObj, "overlay", "musicItemThumbnailOverlayRenderer", "content", "musicPlayButtonRenderer", "playNavigationEndpoint", "watchEndpoint", "videoId"),
             alternateId: this.traverse(trackObj, "playlistItemData", "playlistSetVideoId"),
             title: this.traverse(trackObj, "flexColumns", "0", "musicResponsiveListItemFlexColumnRenderer", "text", "runs", "0", "text"),
-            artists: artists,
+            artists: artistsWithIds.length > 0 ? artistsWithIds : allArtists,
             album: album,
             duration: duration
         };
