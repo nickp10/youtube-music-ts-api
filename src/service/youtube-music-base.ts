@@ -85,7 +85,7 @@ export default class YouTubeMusicBase {
 
     protected playlistIdTrim(playlistId: string): string {
         if (playlistId && playlistId.toUpperCase().startsWith("VL")) {
-            return playlistId.substr(2);
+            return playlistId.substring(2);
         }
         return playlistId;
     }
