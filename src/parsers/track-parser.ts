@@ -24,11 +24,11 @@ export default class TrackParser extends BaseParser {
         const artistsObj = this.traverse(trackObj, "flexColumns", "1", "musicResponsiveListItemFlexColumnRenderer", "text", "runs");
         if (Array.isArray(artistsObj)) {
             for (const artistObj of artistsObj) {
-                const artistId = this.traverse(artistObj, "navigationEndpoint", "browseEndpoint", "browseId");
-                if (artistId) {
+                const artistName = this.traverse(artistObj, "text");
+                if (artistName) {
                     artists.push({
-                        id: artistId,
-                        name: this.traverse(artistObj, "text")
+                        id: this.traverse(artistObj, "navigationEndpoint", "browseEndpoint", "browseId"),
+                        name: artistName
                     });
                 }
             }
