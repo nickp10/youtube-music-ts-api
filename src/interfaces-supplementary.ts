@@ -225,4 +225,3 @@ export interface IThumbnail {
      */
     height?: number,
 }
-
