@@ -38,7 +38,11 @@ A promise that will yield authenticated access to the YouTube Music API.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:16](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L16)
+=======
+[interfaces-primary.ts:17](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L17)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -56,7 +60,11 @@ A promise that will yield guest access to the YouTube Music API.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:23](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L23)
+=======
+[interfaces-primary.ts:24](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L24)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 
 <a name="interfaces_primaryiyoutubemusicauthenticatedmd"></a>
@@ -88,6 +96,7 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 - [getLibraryTracks](#getlibrarytracks)
 - [getPlaylist](#getplaylist)
 - [moveTrackWithinPlaylist](#movetrackwithinplaylist)
+- [rateTrack](#ratetrack)
 - [removeTracksFromPlaylist](#removetracksfromplaylist)
 
 ## Methods
@@ -113,7 +122,11 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:37](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L37)
+=======
+[interfaces-primary.ts:38](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L38)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -140,7 +153,11 @@ A promise that will yield the playlist with its ID.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L48)
+=======
+[interfaces-primary.ts:49](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L49)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -164,7 +181,11 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:56](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L56)
+=======
+[interfaces-primary.ts:57](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L57)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -192,7 +213,11 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L123)
+=======
+[interfaces-primary.ts:134](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L134)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -210,7 +235,11 @@ A promise that will yield an array of all the albums in the user's library.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L63)
+=======
+[interfaces-primary.ts:64](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L64)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -228,7 +257,11 @@ A promise that will yield an array of all the artists in the user's library.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:70](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L70)
+=======
+[interfaces-primary.ts:71](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L71)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -246,7 +279,11 @@ A promise that will yield a playlist with detailed information on a recently pla
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:91](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L91)
+=======
+[interfaces-primary.ts:92](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L92)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -264,7 +301,11 @@ A promise that will yield an array of all the playlists in the user's library.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:77](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L77)
+=======
+[interfaces-primary.ts:78](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L78)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -282,7 +323,11 @@ A promise that will yield an array of all the tracks in the user's library.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:84](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L84)
+=======
+[interfaces-primary.ts:85](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L85)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -311,7 +356,11 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:136](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L136)
+=======
+[interfaces-primary.ts:147](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L147)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -337,7 +386,36 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:101](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L101)
+=======
+[interfaces-primary.ts:102](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L102)
+
+___
+
+### rateTrack
+
+▸ **rateTrack**(`videoId`, `rating`): `Promise`<`boolean`\>
+
+Rates a song ("thumbs up"/"thumbs down" interactions on YouTube Music)
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `videoId` | `string` | Video ID |
+| `rating` | ``"LIKE"`` \| ``"DISLIKE"`` \| ``"INDIFFERENT"`` | One of 'LIKE', 'DISLIKE', 'INDIFFERENT' 'INDIFFERENT' removes the previous rating and assigns no rating |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+A promise that will yield whether or not the operation was successful.
+
+#### Defined in
+
+[interfaces-primary.ts:121](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L121)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -362,7 +440,11 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:110](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L110)
+=======
+[interfaces-primary.ts:111](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L111)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 
 <a name="interfaces_primaryiyoutubemusicguestmd"></a>
@@ -408,7 +490,11 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L123)
+=======
+[interfaces-primary.ts:134](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L134)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 ___
 
@@ -433,7 +519,11 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
+<<<<<<< HEAD
 [interfaces-primary.ts:136](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L136)
+=======
+[interfaces-primary.ts:147](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L147)
+>>>>>>> 98a64c4 (Add support for thumbnails and likes)
 
 
 <a name="interfaces_supplementaryialbumdetailmd"></a>
@@ -469,7 +559,7 @@ The artist(s) that composed the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:33](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L33)
+[interfaces-supplementary.ts:33](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L33)
 
 ___
 
@@ -481,7 +571,7 @@ The count of tracks within the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:23](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L23)
+[interfaces-supplementary.ts:23](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L23)
 
 ___
 
@@ -493,7 +583,7 @@ The description of the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:18](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L18)
+[interfaces-supplementary.ts:18](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L18)
 
 ___
 
@@ -505,7 +595,7 @@ The duration of the album in milliseconds.
 
 #### Defined in
 
-[interfaces-supplementary.ts:28](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L28)
+[interfaces-supplementary.ts:28](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L28)
 
 ___
 
@@ -517,7 +607,7 @@ The ID of the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:8](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L8)
+[interfaces-supplementary.ts:8](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L8)
 
 ___
 
@@ -529,7 +619,7 @@ The name of the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:13](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L13)
+[interfaces-supplementary.ts:13](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L13)
 
 ___
 
@@ -541,7 +631,7 @@ The day the album was released.
 
 #### Defined in
 
-[interfaces-supplementary.ts:38](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L38)
+[interfaces-supplementary.ts:38](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L38)
 
 ___
 
@@ -553,7 +643,7 @@ The month the album was released.
 
 #### Defined in
 
-[interfaces-supplementary.ts:43](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L43)
+[interfaces-supplementary.ts:43](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L43)
 
 ___
 
@@ -565,7 +655,7 @@ The year the album was released.
 
 #### Defined in
 
-[interfaces-supplementary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L48)
+[interfaces-supplementary.ts:48](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L48)
 
 ___
 
@@ -577,7 +667,7 @@ The array of tracks within the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:53](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L53)
+[interfaces-supplementary.ts:53](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L53)
 
 
 <a name="interfaces_supplementaryialbumsummarymd"></a>
@@ -607,7 +697,7 @@ The artist that composed the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:73](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L73)
+[interfaces-supplementary.ts:73](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L73)
 
 ___
 
@@ -619,7 +709,7 @@ The ID of the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L63)
+[interfaces-supplementary.ts:63](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L63)
 
 ___
 
@@ -631,7 +721,7 @@ The name of the album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:68](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L68)
+[interfaces-supplementary.ts:68](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L68)
 
 ___
 
@@ -643,7 +733,7 @@ The year the album was released.
 
 #### Defined in
 
-[interfaces-supplementary.ts:78](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L78)
+[interfaces-supplementary.ts:78](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L78)
 
 
 <a name="interfaces_supplementaryiartistsummarymd"></a>
@@ -671,7 +761,7 @@ The ID of the artist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:88](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L88)
+[interfaces-supplementary.ts:88](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L88)
 
 ___
 
@@ -683,7 +773,7 @@ The name of the artist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:93](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L93)
+[interfaces-supplementary.ts:93](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L93)
 
 
 <a name="interfaces_supplementaryiplaylistdetailmd"></a>
@@ -715,7 +805,7 @@ The count of tracks within the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:118](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L118)
+[interfaces-supplementary.ts:118](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L118)
 
 ___
 
@@ -727,7 +817,7 @@ The description of the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:113](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L113)
+[interfaces-supplementary.ts:113](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L113)
 
 ___
 
@@ -739,7 +829,7 @@ The ID of the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:103](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L103)
+[interfaces-supplementary.ts:103](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L103)
 
 ___
 
@@ -751,7 +841,7 @@ The name of the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:108](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L108)
+[interfaces-supplementary.ts:108](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L108)
 
 ___
 
@@ -763,7 +853,7 @@ The privacy level of the playlist. This value will be PUBLIC, PRIVATE, or UNLIST
 
 #### Defined in
 
-[interfaces-supplementary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L123)
+[interfaces-supplementary.ts:123](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L123)
 
 ___
 
@@ -775,7 +865,7 @@ The array of tracks within the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:128](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L128)
+[interfaces-supplementary.ts:128](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L128)
 
 
 <a name="interfaces_supplementaryiplaylistsummarymd"></a>
@@ -793,6 +883,7 @@ Defines a playlist summary.
 - [count](#count)
 - [id](#id)
 - [name](#name)
+- [thumbnails](#thumbnails)
 
 ## Properties
 
@@ -804,7 +895,7 @@ The count of tracks within the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:148](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L148)
+[interfaces-supplementary.ts:148](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L148)
 
 ___
 
@@ -816,7 +907,7 @@ The ID of the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:138](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L138)
+[interfaces-supplementary.ts:138](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L138)
 
 ___
 
@@ -828,7 +919,70 @@ The name of the playlist.
 
 #### Defined in
 
-[interfaces-supplementary.ts:143](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L143)
+[interfaces-supplementary.ts:143](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L143)
+
+___
+
+### thumbnails
+
+• `Optional` **thumbnails**: [`IThumbnail`](#interfaces_supplementaryithumbnailmd)[]
+
+Thumbsnails, ordered from smallest to larges
+
+#### Defined in
+
+[interfaces-supplementary.ts:153](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L153)
+
+
+<a name="interfaces_supplementaryithumbnailmd"></a>
+
+# Interface: IThumbnail
+
+[interfaces-supplementary](../modules/interfaces_supplementary.md).IThumbnail
+
+## Table of contents
+
+### Properties
+
+- [height](#height)
+- [url](#url)
+- [width](#width)
+
+## Properties
+
+### height
+
+• `Optional` **height**: `number`
+
+Height of thumbnail
+
+#### Defined in
+
+[interfaces-supplementary.ts:226](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L226)
+
+___
+
+### url
+
+• `Optional` **url**: `string`
+
+URL for thumbnail
+
+#### Defined in
+
+[interfaces-supplementary.ts:216](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L216)
+
+___
+
+### width
+
+• `Optional` **width**: `number`
+
+Width of thumbnail
+
+#### Defined in
+
+[interfaces-supplementary.ts:221](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L221)
 
 
 <a name="interfaces_supplementaryitrackdetailmd"></a>
@@ -849,6 +1003,8 @@ Defines the details for a track.
 - [duration](#duration)
 - [durationMillis](#durationmillis)
 - [id](#id)
+- [likeStatus](#likestatus)
+- [thumbnails](#thumbnails)
 - [title](#title)
 - [trackNumber](#tracknumber)
 
@@ -862,7 +1018,7 @@ The album the track is from.
 
 #### Defined in
 
-[interfaces-supplementary.ts:179](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L179)
+[interfaces-supplementary.ts:184](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L184)
 
 ___
 
@@ -875,7 +1031,7 @@ is used in combination with the standard ID in order to remove tracks from playl
 
 #### Defined in
 
-[interfaces-supplementary.ts:164](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L164)
+[interfaces-supplementary.ts:169](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L169)
 
 ___
 
@@ -887,7 +1043,7 @@ The artist(s) that compose the track.
 
 #### Defined in
 
-[interfaces-supplementary.ts:174](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L174)
+[interfaces-supplementary.ts:179](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L179)
 
 ___
 
@@ -899,7 +1055,7 @@ The duration of the track as a readable string.
 
 #### Defined in
 
-[interfaces-supplementary.ts:184](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L184)
+[interfaces-supplementary.ts:189](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L189)
 
 ___
 
@@ -911,7 +1067,7 @@ The duration of the track in milliseconds.
 
 #### Defined in
 
-[interfaces-supplementary.ts:189](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L189)
+[interfaces-supplementary.ts:194](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L194)
 
 ___
 
@@ -923,7 +1079,31 @@ The ID of the track.
 
 #### Defined in
 
-[interfaces-supplementary.ts:158](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L158)
+[interfaces-supplementary.ts:163](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L163)
+
+___
+
+### likeStatus
+
+• `Optional` **likeStatus**: ``"LIKE"`` \| ``"DISLIKE"`` \| ``"INDIFFERENT"``
+
+Like status. One of LIKE, DISLIKE, INDIFFERENT
+
+#### Defined in
+
+[interfaces-supplementary.ts:209](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L209)
+
+___
+
+### thumbnails
+
+• `Optional` **thumbnails**: [`IThumbnail`](#interfaces_supplementaryithumbnailmd)[]
+
+Thumbsnails, ordered from smallest to larges
+
+#### Defined in
+
+[interfaces-supplementary.ts:204](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L204)
 
 ___
 
@@ -935,7 +1115,7 @@ The title of the track.
 
 #### Defined in
 
-[interfaces-supplementary.ts:169](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L169)
+[interfaces-supplementary.ts:174](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L174)
 
 ___
 
@@ -947,4 +1127,4 @@ The track number within an album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:194](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L194)
+[interfaces-supplementary.ts:199](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L199)

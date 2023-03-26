@@ -1,6 +1,6 @@
 import BaseParser from "./base-parser";
 import { IInternalTracksDetail } from "../interfaces-internal";
-import { IAlbumSummary, IArtistSummary, ITrackDetail } from "../interfaces-supplementary";
+import { IAlbumSummary, IArtistSummary, IThumbnail, ITrackDetail } from "../interfaces-supplementary";
 
 export default class TrackParser extends BaseParser {
     parseTrackDetails(trackObjs: any): ITrackDetail[] {
@@ -41,7 +41,7 @@ export default class TrackParser extends BaseParser {
                 }
             }
         }
-        let album: IAlbumSummary = undefined;
+        let album: IAlbumSummary|undefined = undefined;
         const albumObj = this.traverse(trackObj, "flexColumns", "2", "musicResponsiveListItemFlexColumnRenderer", "text", "runs", "0");
         if (albumObj) {
             album = {
@@ -52,22 +52,35 @@ export default class TrackParser extends BaseParser {
         const duration =
             this.traverse(trackObj, "fixedColumns", "0", "musicResponsiveListItemFixedColumnRenderer", "text", "simpleText") ||
             this.traverse(trackObj, "fixedColumns", "0", "musicResponsiveListItemFixedColumnRenderer", "text", "runs", "0", "text");
+
+        const buttonsObj = (this.traverse(trackObj, "menu", "menuRenderer", "topLevelButtons"));
+        let likeStatus: "LIKE"|"DISLIKE"|"INDIFFERENT" = "INDIFFERENT";
+        if (Array.isArray(buttonsObj)) {
+            for (const buttonObj of buttonsObj) {
+                if (buttonObj.likeButtonRenderer) {
+                    likeStatus = buttonObj.likeButtonRenderer.likeStatus;
+                }
+            }
+        }
+
         return {
             id: this.traverse(trackObj, "overlay", "musicItemThumbnailOverlayRenderer", "content", "musicPlayButtonRenderer", "playNavigationEndpoint", "watchEndpoint", "videoId"),
             alternateId: this.traverse(trackObj, "playlistItemData", "playlistSetVideoId"),
             title: this.traverse(trackObj, "flexColumns", "0", "musicResponsiveListItemFlexColumnRenderer", "text", "runs", "0", "text"),
             artists: artistsWithIds.length > 0 ? artistsWithIds : allArtists,
             album: album,
+            thumbnails: this.traverse(trackObj, "thumbnail", "musicThumbnailRenderer", "thumbnail", "thumbnails"),
+            likeStatus: likeStatus,
             duration: duration
         };
     }
 
     /**
      * Checks whether or not the track is missing data or if it contains all the appropriate data.
-     * 
+     *
      * The YouTube Music API will fail sometimes and return "Song is private" instead of the actual track data.
      * This function checks for the existence of that problematic symptom.
-     * 
+     *
      * @param track The track to determine if the data is missing.
      * @returns True if the track is missing data, or false if the track contains all the appropriate data.
      */
