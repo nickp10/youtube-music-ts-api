@@ -68,6 +68,7 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         const response = await this.sendRequest("browse", {
             browseId: "FEmusic_liked_playlists",
         });
+
         return this.playlistParser.parsePlaylistsSummaryResponse(response);
     }
 
@@ -181,6 +182,34 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
             playlistId: this.playlistIdTrim(playlistId),
             actions: actions
         });
+        return response.status === "STATUS_SUCCEEDED";
+    }
+
+    /**
+     * Rates a song ("thumbs up"/"thumbs down" interactions on YouTube Music)
+     *
+     * @param videoId Video ID
+     * @param rating One of 'LIKE', 'DISLIKE', 'INDIFFERENT'
+     *   'INDIFFERENT' removes the previous rating and assigns no rating
+     * @returns
+     */
+    async rateTrack(videoId: string, rating: "LIKE"|"DISLIKE"|"INDIFFERENT"): Promise<boolean> {
+        let endpoint: string;
+
+        if (rating === "LIKE") {
+            endpoint = "like/like";
+        } else if (rating === "DISLIKE") {
+            endpoint = "like/dislike";
+        } else {
+            endpoint = "like/removelike";
+        }
+
+        const response = await this.sendRequest(endpoint, {
+            target: {
+                videoId: videoId,
+            }
+        });
+
         return response.status === "STATUS_SUCCEEDED";
     }
 }

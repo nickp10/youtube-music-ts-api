@@ -42,9 +42,11 @@ export default class PlaylistParser extends BaseParser {
                 }
             }
         }
+
         return {
             id: this.traverse(playlistObj, "musicTwoRowItemRenderer", "title", "runs", "0", "navigationEndpoint", "browseEndpoint", "browseId"),
             name: this.traverse(playlistObj, "musicTwoRowItemRenderer", "title", "runs", "0", "text"),
+            thumbnails: this.traverse(playlistObj, "musicTwoRowItemRenderer", "thumbnailRenderer", "musicThumbnailRenderer", "thumbnail", "thumbnails"),
             count: count
         };
     }
