@@ -10,9 +10,8 @@ export default class YouTubeMusic implements IYouTubeMusic {
     /**
      * Authenticates the user with the YouTube Music API. This function overload requies the cookie string of a valid logged in user.
      * 
-     * @param cookiesStr The cookie string of a valid logged in user. The minimum required cookie values needed are the HSID, SSID, APISID,
-     * SAPISID, __Secure-3PSID, and __Secure-3PAPISID. To obtain this cookie value, log into https://music.youtube.com as a user and use
-     * your browser's developer tools to obtain the "cookie" value sent as a request header. Extra values in the cookie will be ignored.
+     * @param cookiesStr The cookie string of a valid logged in user. To obtain this cookie value, log into https://music.youtube.com as a user
+     * and use your browser's developer tools to obtain the "cookie" value sent as a request header. Extra values in the cookie will be ignored.
      * @param authUser X-Goog-AuthUser header value
      * @returns A promise that will yield authenticated access to the YouTube Music API.
      */
@@ -32,12 +31,7 @@ export default class YouTubeMusic implements IYouTubeMusic {
             }
         }
         return new YouTubeMusicAuthenticated(
-            cookies.get("HSID"),
-            cookies.get("SSID"),
-            cookies.get("APISID"),
-            cookies.get("SAPISID"),
-            cookies.get("__Secure-3PSID"),
-            cookies.get("__Secure-3PAPISID"),
+            cookies,
             authUser
         );
     }

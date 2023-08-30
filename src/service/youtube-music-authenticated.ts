@@ -11,22 +11,12 @@ import {
 import { IYouTubeMusicAuthenticated} from "../interfaces-primary";
 
 export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest implements IYouTubeMusicAuthenticated {
-    private hsid: string;
-    private ssid: string;
-    private apisid: string;
-    private sapisid: string;
-    private secure3psid: string;
-    private secure3papisid: string;
+    private cookies: Map<string, string>;
     private authUser: number;
 
-    constructor(hsid: string, ssid: string, apisid: string, sapisid: string, secure3psid: string, secure3papisid: string, authUser: number) {
+    constructor(cookies: Map<string, string>, authUser: number) {
         super();
-        this.hsid = hsid;
-        this.ssid = ssid;
-        this.apisid = apisid;
-        this.sapisid = sapisid;
-        this.secure3psid = secure3psid;
-        this.secure3papisid = secure3papisid;
+        this.cookies = cookies;
         this.authUser = authUser;
     }
 
@@ -41,13 +31,20 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
 
     private generateAuthorization(): string {
         let time = new Date().getTime();
-        const input = `${time} ${this.secure3papisid} ${this.origin}`;
+        const input = `${time} ${this.cookies.get("__Secure-3PAPISID")} ${this.origin}`;
         const digest = sha1(input);
         return `SAPISIDHASH ${time}_${digest}`;
     }
 
     private generateCookie(): string {
-        return `HSID=${this.hsid}; SSID=${this.ssid}; APISID=${this.apisid}; SAPISID=${this.sapisid}; __Secure-3PSID=${this.secure3psid}; __Secure-3PAPISID=${this.secure3papisid}`;
+        let cookieStr = "";
+        this.cookies.forEach(function(value, key) {
+            if (cookieStr) {
+                cookieStr += ";";
+            }
+            cookieStr += key + "=" + value;
+        });
+        return cookieStr;
     }
 
     async getLibraryAlbums(): Promise<IAlbumSummary[]> {
