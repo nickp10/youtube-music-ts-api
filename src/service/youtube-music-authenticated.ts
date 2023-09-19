@@ -92,15 +92,26 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         const response = await this.sendRequest("browse", data);
 
         // cannot use parsePlaylistDetailResponse because last slice is different IE musicPlaylistShelfRenderer !== musicShelfRenderer
-        const recentPlays = this.playlistParser.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicShelfRenderer");
+        const recentPlaySlices = this.playlistParser.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents");
+
+        // iterate each time slice (IE Today, Yesterday, May 2023) and concatenate all found tracks into one list
+        const trackLists: any[][] = [];
+        for(const listContent of recentPlaySlices) {
+            // need to check renderer and contents exists because sometimes one (or both) don't exist??
+            if(listContent.musicShelfRenderer !== undefined && listContent.musicShelfRenderer.contents !== undefined && listContent.musicShelfRenderer.contents.length > 0) {
+                trackLists.push(listContent.musicShelfRenderer.contents);
+            }
+        }
+
+        const tracks = trackLists.flat(1);
 
         return {
             id: 'FEmusic_history', // no real id for this playlist
             name: 'History',
             description: 'Recently played music in reverse chronological order',
             privacy: 'PRIVATE',
-            count: recentPlays.contents.length,
-            tracks: this.trackParser.parseTrackDetails(recentPlays.contents)
+            count: tracks.length,
+            tracks: this.trackParser.parseTrackDetails(tracks)
         }
     }
 
