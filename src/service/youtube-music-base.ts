@@ -31,7 +31,7 @@ export default class YouTubeMusicBase {
     }
 
     protected async sendRequest(path: string, data?: any, additionalQueryString?: string): Promise<any> {
-        let dataStr: string|undefined = undefined;
+        let dataStr: string = undefined;
         if (data) {
             data = {
                 ...YouTubeMusicContext,

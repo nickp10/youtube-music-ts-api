@@ -110,14 +110,13 @@ export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
     removeTracksFromPlaylist(playlistId: string, ...tracks: ITrackDetail[]): Promise<boolean>;
 
     /**
-     * Rates a song ("thumbs up"/"thumbs down" interactions on YouTube Music)
+     * Rates a track ("thumbs up"/"thumbs down" interaction).
      *
-     * @param videoId Video ID
-     * @param rating One of 'LIKE', 'DISLIKE', 'INDIFFERENT'
-     *   'INDIFFERENT' removes the previous rating and assigns no rating
+     * @param trackId The ID of the track to rate.
+     * @param rating One of 'LIKE', 'DISLIKE', or 'INDIFFERENT'. 'INDIFFERENT' removes the previous rating and assigns no rating.
      * @returns A promise that will yield whether or not the operation was successful.
      */
-    rateTrack(videoId: string, rating: "LIKE"|"DISLIKE"|"INDIFFERENT"): Promise<boolean>;
+    rateTrack(trackId: string, rating: "LIKE"|"DISLIKE"|"INDIFFERENT"): Promise<boolean>;
 }
 
 /**

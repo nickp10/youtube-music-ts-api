@@ -148,7 +148,7 @@ export interface IPlaylistSummary {
     count?: number;
 
     /**
-     * Thumbsnails, ordered from smallest to larges
+     * The thumbnails for the playlist (ordered from smallest to largest).
      */
     thumbnails?: IThumbnail[];
 }
@@ -199,29 +199,32 @@ export interface ITrackDetail {
     trackNumber?: number;
 
     /**
-     * Thumbsnails, ordered from smallest to larges
+     * The thumbnails for the track (ordered from smallest to largest).
      */
-     thumbnails?: IThumbnail[];
+    thumbnails?: IThumbnail[];
 
-     /**
-      * Like status. One of LIKE, DISLIKE, INDIFFERENT
-      */
-     likeStatus?: "LIKE"|"DISLIKE"|"INDIFFERENT";
+    /**
+     * The rating for the track (LIKE, DISLIKE, or INDIFFERENT).
+     */
+    likeStatus?: "LIKE"|"DISLIKE"|"INDIFFERENT";
 }
 
+/**
+ * Defines the details for a thumbnail.
+ */
 export interface IThumbnail {
     /**
-     * URL for thumbnail
+     * The URL for the thumbnail.
      */
     url?: string,
 
     /**
-     * Width of thumbnail
+     * The width of the thumbnail.
      */
     width?: number,
 
     /**
-     * Height of thumbnail
+     * The height of the thumbnail.
      */
     height?: number,
 }

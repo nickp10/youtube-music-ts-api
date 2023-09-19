@@ -1,6 +1,6 @@
 import BaseParser from "./base-parser";
 import { IInternalTracksDetail } from "../interfaces-internal";
-import { IAlbumSummary, IArtistSummary, IThumbnail, ITrackDetail } from "../interfaces-supplementary";
+import { IAlbumSummary, IArtistSummary, ITrackDetail } from "../interfaces-supplementary";
 
 export default class TrackParser extends BaseParser {
     parseTrackDetails(trackObjs: any): ITrackDetail[] {
@@ -41,7 +41,7 @@ export default class TrackParser extends BaseParser {
                 }
             }
         }
-        let album: IAlbumSummary|undefined = undefined;
+        let album: IAlbumSummary = undefined;
         const albumObj = this.traverse(trackObj, "flexColumns", "2", "musicResponsiveListItemFlexColumnRenderer", "text", "runs", "0");
         if (albumObj) {
             album = {

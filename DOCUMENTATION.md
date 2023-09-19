@@ -38,15 +38,7 @@ A promise that will yield authenticated access to the YouTube Music API.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:16](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L16)
-=======
-[interfaces-primary.ts:17](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L17)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:17](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L17)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -64,15 +56,7 @@ A promise that will yield guest access to the YouTube Music API.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:23](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L23)
-=======
-[interfaces-primary.ts:24](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L24)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:24](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L24)
->>>>>>> 1064d51 (Replace name)
 
 
 <a name="interfaces_primaryiyoutubemusicauthenticatedmd"></a>
@@ -130,15 +114,7 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:37](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L37)
-=======
-[interfaces-primary.ts:38](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L38)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:38](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L38)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -165,15 +141,7 @@ A promise that will yield the playlist with its ID.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L48)
-=======
-[interfaces-primary.ts:49](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L49)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:49](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L49)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -197,15 +165,7 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:56](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L56)
-=======
-[interfaces-primary.ts:57](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L57)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:57](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L57)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -233,15 +193,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[interfaces-primary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L123)
-=======
-[interfaces-primary.ts:134](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L134)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:134](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L134)
->>>>>>> 1064d51 (Replace name)
+[interfaces-primary.ts:132](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L132)
 
 ___
 
@@ -259,15 +211,7 @@ A promise that will yield an array of all the albums in the user's library.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:63](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L63)
-=======
-[interfaces-primary.ts:64](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L64)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:64](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L64)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -285,15 +229,7 @@ A promise that will yield an array of all the artists in the user's library.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:70](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L70)
-=======
-[interfaces-primary.ts:71](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L71)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:71](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L71)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -311,15 +247,7 @@ A promise that will yield a playlist with detailed information on a recently pla
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:91](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L91)
-=======
-[interfaces-primary.ts:92](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L92)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:92](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L92)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -337,15 +265,7 @@ A promise that will yield an array of all the playlists in the user's library.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:77](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L77)
-=======
-[interfaces-primary.ts:78](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L78)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:78](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L78)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -363,15 +283,7 @@ A promise that will yield an array of all the tracks in the user's library.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:84](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L84)
-=======
-[interfaces-primary.ts:85](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L85)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:85](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L85)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
@@ -400,15 +312,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[interfaces-primary.ts:136](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L136)
-=======
-[interfaces-primary.ts:147](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L147)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:147](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L147)
->>>>>>> 1064d51 (Replace name)
+[interfaces-primary.ts:145](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L145)
 
 ___
 
@@ -434,29 +338,22 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:101](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L101)
-=======
-[interfaces-primary.ts:102](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L102)
-=======
-[interfaces-primary.ts:102](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L102)
->>>>>>> 1064d51 (Replace name)
 
 ___
 
 ### rateTrack
 
-▸ **rateTrack**(`videoId`, `rating`): `Promise`<`boolean`\>
+▸ **rateTrack**(`trackId`, `rating`): `Promise`<`boolean`\>
 
-Rates a song ("thumbs up"/"thumbs down" interactions on YouTube Music)
+Rates a track ("thumbs up"/"thumbs down" interaction).
 
 #### Parameters
 
 | Name | Type | Description |
 | :------ | :------ | :------ |
-| `videoId` | `string` | Video ID |
-| `rating` | ``"LIKE"`` \| ``"DISLIKE"`` \| ``"INDIFFERENT"`` | One of 'LIKE', 'DISLIKE', 'INDIFFERENT' 'INDIFFERENT' removes the previous rating and assigns no rating |
+| `trackId` | `string` | The ID of the track to rate. |
+| `rating` | ``"LIKE"`` \| ``"DISLIKE"`` \| ``"INDIFFERENT"`` | One of 'LIKE', 'DISLIKE', or 'INDIFFERENT'. 'INDIFFERENT' removes the previous rating and assigns no rating. |
 
 #### Returns
 
@@ -466,12 +363,7 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
-<<<<<<< HEAD
-[interfaces-primary.ts:121](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L121)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:121](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L121)
->>>>>>> 1064d51 (Replace name)
+[interfaces-primary.ts:119](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L119)
 
 ___
 
@@ -496,15 +388,7 @@ A promise that will yield whether or not the operation was successful.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 [interfaces-primary.ts:110](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L110)
-=======
-[interfaces-primary.ts:111](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L111)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:111](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L111)
->>>>>>> 1064d51 (Replace name)
 
 
 <a name="interfaces_primaryiyoutubemusicguestmd"></a>
@@ -550,15 +434,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[interfaces-primary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L123)
-=======
-[interfaces-primary.ts:134](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L134)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:134](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L134)
->>>>>>> 1064d51 (Replace name)
+[interfaces-primary.ts:132](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L132)
 
 ___
 
@@ -583,15 +459,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-[interfaces-primary.ts:136](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L136)
-=======
-[interfaces-primary.ts:147](https://github.com/theyak/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L147)
->>>>>>> 98a64c4 (Add support for thumbnails and likes)
-=======
-[interfaces-primary.ts:147](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L147)
->>>>>>> 1064d51 (Replace name)
+[interfaces-primary.ts:145](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L145)
 
 
 <a name="interfaces_supplementaryialbumdetailmd"></a>
@@ -995,7 +863,7 @@ ___
 
 • `Optional` **thumbnails**: [`IThumbnail`](#interfaces_supplementaryithumbnailmd)[]
 
-Thumbsnails, ordered from smallest to larges
+The thumbnails for the playlist (ordered from smallest to largest).
 
 #### Defined in
 
@@ -1007,6 +875,8 @@ Thumbsnails, ordered from smallest to larges
 # Interface: IThumbnail
 
 [interfaces-supplementary](../modules/interfaces_supplementary.md).IThumbnail
+
+Defines the details for a thumbnail.
 
 ## Table of contents
 
@@ -1022,11 +892,11 @@ Thumbsnails, ordered from smallest to larges
 
 • `Optional` **height**: `number`
 
-Height of thumbnail
+The height of the thumbnail.
 
 #### Defined in
 
-[interfaces-supplementary.ts:226](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L226)
+[interfaces-supplementary.ts:229](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L229)
 
 ___
 
@@ -1034,11 +904,11 @@ ___
 
 • `Optional` **url**: `string`
 
-URL for thumbnail
+The URL for the thumbnail.
 
 #### Defined in
 
-[interfaces-supplementary.ts:216](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L216)
+[interfaces-supplementary.ts:219](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L219)
 
 ___
 
@@ -1046,11 +916,11 @@ ___
 
 • `Optional` **width**: `number`
 
-Width of thumbnail
+The width of the thumbnail.
 
 #### Defined in
 
-[interfaces-supplementary.ts:221](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L221)
+[interfaces-supplementary.ts:224](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L224)
 
 
 <a name="interfaces_supplementaryitrackdetailmd"></a>
@@ -1155,7 +1025,7 @@ ___
 
 • `Optional` **likeStatus**: ``"LIKE"`` \| ``"DISLIKE"`` \| ``"INDIFFERENT"``
 
-Like status. One of LIKE, DISLIKE, INDIFFERENT
+The rating for the track (LIKE, DISLIKE, or INDIFFERENT).
 
 #### Defined in
 
@@ -1167,7 +1037,7 @@ ___
 
 • `Optional` **thumbnails**: [`IThumbnail`](#interfaces_supplementaryithumbnailmd)[]
 
-Thumbsnails, ordered from smallest to larges
+The thumbnails for the track (ordered from smallest to largest).
 
 #### Defined in
 
