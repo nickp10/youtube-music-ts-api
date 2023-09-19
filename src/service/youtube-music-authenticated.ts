@@ -191,4 +191,24 @@ export default class YouTubeMusicAuthenticated extends YouTubeMusicGuest impleme
         });
         return response.status === "STATUS_SUCCEEDED";
     }
+
+    async rateTrack(trackId: string, rating: "LIKE"|"DISLIKE"|"INDIFFERENT"): Promise<boolean> {
+        let endpoint: string;
+
+        if (rating === "LIKE") {
+            endpoint = "like/like";
+        } else if (rating === "DISLIKE") {
+            endpoint = "like/dislike";
+        } else {
+            endpoint = "like/removelike";
+        }
+
+        const response = await this.sendRequest(endpoint, {
+            target: {
+                videoId: trackId,
+            }
+        });
+
+        return response.status === "STATUS_SUCCEEDED";
+    }
 }

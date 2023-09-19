@@ -146,6 +146,11 @@ export interface IPlaylistSummary {
      * The count of tracks within the playlist.
      */
     count?: number;
+
+    /**
+     * The thumbnails for the playlist (ordered from smallest to largest).
+     */
+    thumbnails?: IThumbnail[];
 }
 
 /**
@@ -192,4 +197,34 @@ export interface ITrackDetail {
      * The track number within an album.
      */
     trackNumber?: number;
+
+    /**
+     * The thumbnails for the track (ordered from smallest to largest).
+     */
+    thumbnails?: IThumbnail[];
+
+    /**
+     * The rating for the track (LIKE, DISLIKE, or INDIFFERENT).
+     */
+    likeStatus?: "LIKE"|"DISLIKE"|"INDIFFERENT";
+}
+
+/**
+ * Defines the details for a thumbnail.
+ */
+export interface IThumbnail {
+    /**
+     * The URL for the thumbnail.
+     */
+    url?: string,
+
+    /**
+     * The width of the thumbnail.
+     */
+    width?: number,
+
+    /**
+     * The height of the thumbnail.
+     */
+    height?: number,
 }

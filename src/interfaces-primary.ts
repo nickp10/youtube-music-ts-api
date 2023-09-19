@@ -108,6 +108,15 @@ export interface IYouTubeMusicAuthenticated extends IYouTubeMusicGuest {
      * @returns A promise that will yield whether or not the operation was successful.
      */
     removeTracksFromPlaylist(playlistId: string, ...tracks: ITrackDetail[]): Promise<boolean>;
+
+    /**
+     * Rates a track ("thumbs up"/"thumbs down" interaction).
+     *
+     * @param trackId The ID of the track to rate.
+     * @param rating One of 'LIKE', 'DISLIKE', or 'INDIFFERENT'. 'INDIFFERENT' removes the previous rating and assigns no rating.
+     * @returns A promise that will yield whether or not the operation was successful.
+     */
+    rateTrack(trackId: string, rating: "LIKE"|"DISLIKE"|"INDIFFERENT"): Promise<boolean>;
 }
 
 /**
@@ -128,7 +137,7 @@ export interface IYouTubeMusicGuest {
      * @param id The ID of the playlist to get the detailed information for.
      * @param maxRetries An optional maximum number of retries to obtain the tracks. YouTube Music is
      * incredibly buggy in that not all tracks will be returned in a single request. If the request is
-     * retried, you may get a different set of tracks in the response. If you retry enough times, you 
+     * retried, you may get a different set of tracks in the response. If you retry enough times, you
      * will eventually get all the tracks (a union operation is done internally between all the tracks
      * returned from each individual request).
      * @returns A promise that will yield the detailed information for a specific playlist.

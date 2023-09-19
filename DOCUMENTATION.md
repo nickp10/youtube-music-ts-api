@@ -88,6 +88,7 @@ Defines the YouTube Music APIs available to an authenticated user. An authentica
 - [getLibraryTracks](#getlibrarytracks)
 - [getPlaylist](#getplaylist)
 - [moveTrackWithinPlaylist](#movetrackwithinplaylist)
+- [rateTrack](#ratetrack)
 - [removeTracksFromPlaylist](#removetracksfromplaylist)
 
 ## Methods
@@ -192,7 +193,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-[interfaces-primary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L123)
+[interfaces-primary.ts:132](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L132)
 
 ___
 
@@ -311,7 +312,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-[interfaces-primary.ts:136](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L136)
+[interfaces-primary.ts:145](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L145)
 
 ___
 
@@ -338,6 +339,31 @@ A promise that will yield whether or not the operation was successful.
 #### Defined in
 
 [interfaces-primary.ts:101](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L101)
+
+___
+
+### rateTrack
+
+▸ **rateTrack**(`trackId`, `rating`): `Promise`<`boolean`\>
+
+Rates a track ("thumbs up"/"thumbs down" interaction).
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `trackId` | `string` | The ID of the track to rate. |
+| `rating` | ``"LIKE"`` \| ``"DISLIKE"`` \| ``"INDIFFERENT"`` | One of 'LIKE', 'DISLIKE', or 'INDIFFERENT'. 'INDIFFERENT' removes the previous rating and assigns no rating. |
+
+#### Returns
+
+`Promise`<`boolean`\>
+
+A promise that will yield whether or not the operation was successful.
+
+#### Defined in
+
+[interfaces-primary.ts:119](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L119)
 
 ___
 
@@ -408,7 +434,7 @@ A promise that will yield the detailed information for a specific album.
 
 #### Defined in
 
-[interfaces-primary.ts:123](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L123)
+[interfaces-primary.ts:132](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L132)
 
 ___
 
@@ -433,7 +459,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 #### Defined in
 
-[interfaces-primary.ts:136](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L136)
+[interfaces-primary.ts:145](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L145)
 
 
 <a name="interfaces_supplementaryialbumdetailmd"></a>
@@ -793,6 +819,7 @@ Defines a playlist summary.
 - [count](#count)
 - [id](#id)
 - [name](#name)
+- [thumbnails](#thumbnails)
 
 ## Properties
 
@@ -830,6 +857,71 @@ The name of the playlist.
 
 [interfaces-supplementary.ts:143](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L143)
 
+___
+
+### thumbnails
+
+• `Optional` **thumbnails**: [`IThumbnail`](#interfaces_supplementaryithumbnailmd)[]
+
+The thumbnails for the playlist (ordered from smallest to largest).
+
+#### Defined in
+
+[interfaces-supplementary.ts:153](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L153)
+
+
+<a name="interfaces_supplementaryithumbnailmd"></a>
+
+# Interface: IThumbnail
+
+[interfaces-supplementary](../modules/interfaces_supplementary.md).IThumbnail
+
+Defines the details for a thumbnail.
+
+## Table of contents
+
+### Properties
+
+- [height](#height)
+- [url](#url)
+- [width](#width)
+
+## Properties
+
+### height
+
+• `Optional` **height**: `number`
+
+The height of the thumbnail.
+
+#### Defined in
+
+[interfaces-supplementary.ts:229](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L229)
+
+___
+
+### url
+
+• `Optional` **url**: `string`
+
+The URL for the thumbnail.
+
+#### Defined in
+
+[interfaces-supplementary.ts:219](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L219)
+
+___
+
+### width
+
+• `Optional` **width**: `number`
+
+The width of the thumbnail.
+
+#### Defined in
+
+[interfaces-supplementary.ts:224](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L224)
+
 
 <a name="interfaces_supplementaryitrackdetailmd"></a>
 
@@ -849,6 +941,8 @@ Defines the details for a track.
 - [duration](#duration)
 - [durationMillis](#durationmillis)
 - [id](#id)
+- [likeStatus](#likestatus)
+- [thumbnails](#thumbnails)
 - [title](#title)
 - [trackNumber](#tracknumber)
 
@@ -862,7 +956,7 @@ The album the track is from.
 
 #### Defined in
 
-[interfaces-supplementary.ts:179](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L179)
+[interfaces-supplementary.ts:184](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L184)
 
 ___
 
@@ -875,7 +969,7 @@ is used in combination with the standard ID in order to remove tracks from playl
 
 #### Defined in
 
-[interfaces-supplementary.ts:164](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L164)
+[interfaces-supplementary.ts:169](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L169)
 
 ___
 
@@ -887,7 +981,7 @@ The artist(s) that compose the track.
 
 #### Defined in
 
-[interfaces-supplementary.ts:174](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L174)
+[interfaces-supplementary.ts:179](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L179)
 
 ___
 
@@ -899,7 +993,7 @@ The duration of the track as a readable string.
 
 #### Defined in
 
-[interfaces-supplementary.ts:184](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L184)
+[interfaces-supplementary.ts:189](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L189)
 
 ___
 
@@ -911,7 +1005,7 @@ The duration of the track in milliseconds.
 
 #### Defined in
 
-[interfaces-supplementary.ts:189](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L189)
+[interfaces-supplementary.ts:194](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L194)
 
 ___
 
@@ -923,7 +1017,31 @@ The ID of the track.
 
 #### Defined in
 
-[interfaces-supplementary.ts:158](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L158)
+[interfaces-supplementary.ts:163](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L163)
+
+___
+
+### likeStatus
+
+• `Optional` **likeStatus**: ``"LIKE"`` \| ``"DISLIKE"`` \| ``"INDIFFERENT"``
+
+The rating for the track (LIKE, DISLIKE, or INDIFFERENT).
+
+#### Defined in
+
+[interfaces-supplementary.ts:209](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L209)
+
+___
+
+### thumbnails
+
+• `Optional` **thumbnails**: [`IThumbnail`](#interfaces_supplementaryithumbnailmd)[]
+
+The thumbnails for the track (ordered from smallest to largest).
+
+#### Defined in
+
+[interfaces-supplementary.ts:204](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L204)
 
 ___
 
@@ -935,7 +1053,7 @@ The title of the track.
 
 #### Defined in
 
-[interfaces-supplementary.ts:169](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L169)
+[interfaces-supplementary.ts:174](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L174)
 
 ___
 
@@ -947,4 +1065,4 @@ The track number within an album.
 
 #### Defined in
 
-[interfaces-supplementary.ts:194](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L194)
+[interfaces-supplementary.ts:199](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-supplementary.ts#L199)
