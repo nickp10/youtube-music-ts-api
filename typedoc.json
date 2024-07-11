@@ -3,5 +3,5 @@
     "hideBreadcrumbs": "true",
     "out": "temp-docs",
     "plugin": "typedoc-plugin-markdown",
-    "theme": "markdown"
+    "theme": "default"
 }
