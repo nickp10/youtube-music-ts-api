@@ -51,7 +51,7 @@ export default class PlaylistParser extends BaseParser {
     }
 
     parsePlaylistDetailResponse(response: any): IInternalPlaylistDetail {
-        const playlistObj = this.traverse(response, "contents", "singleColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicPlaylistShelfRenderer");
+        const playlistObj = this.traverse(response, "contents", "twoColumnBrowseResultsRenderer", "secondaryContents", "sectionListRenderer", "contents", "0", "musicPlaylistShelfRenderer");
         if (playlistObj) {
             return this.parsePlaylistDetail(response, playlistObj);
         }
@@ -68,27 +68,43 @@ export default class PlaylistParser extends BaseParser {
     }
 
     parsePlaylistDetail(rootPlaylistObj: any, childPlaylistObj: any): IInternalPlaylistDetail {
-        const isPublic = typeof this.traverse(rootPlaylistObj, "header", "musicEditablePlaylistDetailHeaderRenderer") === "undefined";
-        const privacyHeader = isPublic ?
-            rootPlaylistObj :
-            this.traverse(rootPlaylistObj, "header", "musicEditablePlaylistDetailHeaderRenderer");
+        const privateHeader = this.traverse(rootPlaylistObj, "contents", "twoColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicEditablePlaylistDetailHeaderRenderer");
+        const isPublic = typeof privateHeader === "undefined";
+        const playlistHeader = isPublic ?
+            this.traverse(rootPlaylistObj, "contents", "twoColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicResponsiveHeaderRenderer") :
+            this.traverse(privateHeader, "header", "musicResponsiveHeaderRenderer");
         const privacy = isPublic ?
             "PUBLIC" :
-            this.traverse(privacyHeader, "editHeader", "musicPlaylistEditHeaderRenderer", "privacy");
-        const playlistHeader = this.traverse(privacyHeader, "header", "musicDetailHeaderRenderer");
+            this.traverse(privateHeader, "editHeader", "musicPlaylistEditHeaderRenderer", "privacy");
         let count = 0;
-        const countStr = this.traverse(playlistHeader, "secondSubtitle", "runs", "0", "text");
-        if (countStr) {
-            const countParts = countStr.split(" ");
-            if (countParts && countParts.length > 0) {
-                count = parseInt(countParts[0]);
+        const countRuns = this.traverse(playlistHeader, "secondSubtitle", "runs");
+        if (Array.isArray(countRuns)) {
+            for (const countRun of countRuns) {
+                const countStr = this.traverse(countRun, "text");
+                if (countStr && countStr.includes("track")) {
+                    const countParts = countStr.split(" ");
+                    if (countParts && countParts.length > 0) {
+                        count = parseInt(countParts[0]);
+                        break;
+                    }
+                }
+            }
+        }
+        let description = "";
+        const descriptionRuns = this.traverse(playlistHeader, "description", "musicDescriptionShelfRenderer", "description", "runs");
+        if (Array.isArray(descriptionRuns)) {
+            for (const descriptionRun of descriptionRuns) {
+                const descriptionStr = this.traverse(descriptionRun, "text");
+                if (descriptionStr) {
+                    description += descriptionStr;
+                }
             }
         }
         const trackObjs = this.traverse(childPlaylistObj, "contents");
         return {
             id: this.traverse(childPlaylistObj, "playlistId"),
             name: this.traverse(playlistHeader, "title", "runs", "0", "text"),
-            description: this.traverse(playlistHeader, "description", "runs", "0", "text"),
+            description: description,
             privacy: privacy,
             count: count,
             tracks: this.trackParser.parseTrackDetails(trackObjs),
