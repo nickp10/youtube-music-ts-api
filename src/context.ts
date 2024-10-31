@@ -3,43 +3,35 @@
 */
 export default {
     context: {
-        capabilities: {},
         client: {
-            clientName: "WEB_REMIX",
-            clientVersion: "0.1",
-            experimentIds: [],
-            experimentsToken: "",
-            gl: "DE",
             hl: "en",
-            locationInfo: {
-                locationPermissionAuthorizationStatus: "LOCATION_PERMISSION_AUTHORIZATION_STATUS_UNSUPPORTED"
-            },
+            gl: "US",
+            clientName: "WEB_REMIX",
+            clientVersion: "1.20241030.00.00-canary_experiment_1.20241028.01.00",
             musicAppInfo: {
-                musicActivityMasterSwitch: "MUSIC_ACTIVITY_MASTER_SWITCH_INDETERMINATE",
-                musicLocationMasterSwitch: "MUSIC_LOCATION_MASTER_SWITCH_INDETERMINATE",
-                pwaInstallabilityStatus: "PWA_INSTALLABILITY_STATUS_UNKNOWN"
-            },
-            utcOffsetMinutes: 60
-        },
-        request: {
-            internalExperimentFlags: [
-                {
-                    key: "force_music_enable_outertube_tastebuilder_browse",
-                    value: "true"
-                },
-                {
-                    key: "force_music_enable_outertube_playlist_detail_browse",
-                    value: "true"
-                },
-                {
-                    key: "force_music_enable_outertube_search_suggestions",
-                    value: "true"
+                pwaInstallabilityStatus: "PWA_INSTALLABILITY_STATUS_UNKNOWN",
+                webDisplayMode: "WEB_DISPLAY_MODE_BROWSER",
+                storeDigitalGoodsApiSupportStatus: {
+                    playStoreDigitalGoodsApiSupportStatus: "DIGITAL_GOODS_API_SUPPORT_STATUS_UNSUPPORTED"
                 }
-            ],
-            sessionIndex: {}
+            }
         },
         user: {
-            enableSafetyMode: false
+            lockedSafetyMode: false
+        },
+        request: {
+            useSsl: true,
+            internalExperimentFlags: [],
+            innertubeTokenJar: {
+                appTokens: [
+                    {
+                        type: 2,
+                        value: "EicKI1FQdDJCRTZGbkp6b3hmcXhNUkR4bmRuTnlEUHU1cy04YVVlEAA=",
+                        maxAgeSeconds: 86400,
+                        creationTimeUsec: "1730407563874984"
+                    }
+                ]
+            }
         }
     }
 }

@@ -10,15 +10,15 @@ async function main(): Promise<void> {
     const ytma = await ytm.authenticate(cookieStr);
     const ytmg = await ytm.guest();
     const album = await ytmg.getAlbum("MPREb_NDXVvJ4Gt60");
-    console.log("Album: " + album.name);
     if (album) {
+        console.log("Album: " + album.name);
         for (const track of album.tracks) {
             console.log("    " + track.trackNumber + ": " + track.title);
         }
     }
     const playlist = await ytmg.getPlaylist("VLRDCLAK5uy_nnk58Y3rT4Y62vuYUvGpWGjxL9wsb10uI");
-    console.log("Playlist: " + playlist.name);
     if (playlist) {
+        console.log("Playlist: " + playlist.name);
         for (const track of playlist.tracks) {
             console.log("    " + track.artists[0].name + " - \"" + track.title + "\"");
         }
