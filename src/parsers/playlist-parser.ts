@@ -51,24 +51,23 @@ export default class PlaylistParser extends BaseParser {
     }
 
     parsePlaylistDetailResponse(response: any): IInternalPlaylistDetail {
-        const sectionObj = this.traverse(response, "contents", "twoColumnBrowseResultsRenderer", "secondaryContents", "sectionListRenderer");
-        const playlistObj = this.traverse(sectionObj, "contents", "0", "musicPlaylistShelfRenderer");
+        const playlistObj = this.traverse(response, "contents", "twoColumnBrowseResultsRenderer", "secondaryContents", "sectionListRenderer", "contents", "0", "musicPlaylistShelfRenderer");
         if (playlistObj) {
-            return this.parsePlaylistDetail(response, sectionObj, playlistObj);
+            return this.parsePlaylistDetail(response, playlistObj);
         }
         return undefined;
     }
 
     parsePlaylistDetailContinuation(playlist: IInternalPlaylistDetail, response: any): void {
-        const trackObjs = this.traverse(response, "continuationContents", "musicPlaylistShelfContinuation", "contents");
+        const trackObjs = this.traverse(response, "onResponseReceivedActions", "0", "appendContinuationItemsAction", "continuationItems");
         const tracks = this.trackParser.parseTrackDetails(trackObjs);
         if (Array.isArray(playlist.tracks)) {
             playlist.tracks.push.apply(playlist.tracks, tracks);
         }
-        playlist.continuationToken = this.traverse(response, "continuationContents", "musicPlaylistShelfContinuation", "continuations", "0", "nextContinuationData", "continuation");
+        playlist.continuationToken = this.trackParser.parseTrackContinuationToken(trackObjs);
     }
 
-    parsePlaylistDetail(rootPlaylistObj: any, sectionPlaylistObj: any, childPlaylistObj: any): IInternalPlaylistDetail {
+    parsePlaylistDetail(rootPlaylistObj: any, childPlaylistObj: any): IInternalPlaylistDetail {
         const privateHeader = this.traverse(rootPlaylistObj, "contents", "twoColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicEditablePlaylistDetailHeaderRenderer");
         const isPublic = typeof privateHeader === "undefined";
         const playlistHeader = isPublic ?
@@ -109,7 +108,7 @@ export default class PlaylistParser extends BaseParser {
             privacy: privacy,
             count: count,
             tracks: this.trackParser.parseTrackDetails(trackObjs),
-            continuationToken: this.traverse(sectionPlaylistObj, "continuations", "0", "nextContinuationData", "continuation")
+            continuationToken: this.trackParser.parseTrackContinuationToken(trackObjs)
         };
     }
 

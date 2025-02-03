@@ -120,4 +120,16 @@ export default class TrackParser extends BaseParser {
         }
         return tracks;
     }
+
+    parseTrackContinuationToken(trackObjs: any): string {
+        if (Array.isArray(trackObjs)) {
+            for (const trackObj of trackObjs) {
+                const continuationObj = this.traverse(trackObj, "continuationItemRenderer");
+                if (continuationObj) {
+                    return this.traverse(continuationObj, "continuationEndpoint", "continuationCommand", "token");
+                }
+            }
+        }
+        return undefined;
+    }
 }

@@ -38,7 +38,7 @@ describe("PlaylistParser", () => {
             assert.strictEqual(actual.name, "Presenting Eminem");
             assert.strictEqual(actual.count, 40);
             assert.strictEqual(actual.privacy, "PUBLIC");
-            assert.strictEqual(actual.continuationToken, "4qmFsgI9Ei1WTFJEQ0xBSzV1eV9ubms1OFkzclQ0WTYydnVZVXZHcFdHanhMOXdzYjEwdUkaDGtnRURDTTBHOEFFQQ%3D%3D");
+            assert.strictEqual(actual.continuationToken, undefined);
             assert.strictEqual(actual.description, "The most played hits and essential tracks. #eminem #lyrics #essentials");
             assert.strictEqual(actual.tracks?.length, 40);
         });
@@ -56,7 +56,7 @@ describe("PlaylistParser", () => {
             assert.strictEqual(actual.name, "Recents");
             assert.strictEqual(actual.count, 194);
             assert.strictEqual(actual.privacy, "PRIVATE");
-            assert.strictEqual(actual.continuationToken, "4qmFsgI8EiRWTFBMcjlSUkZNZXVHQlItbll1VTZoc1ZfUUtUdk91cV9kUHgaFGtnRURDT1VFOEFFQjJnY0RDTTBH");
+            assert.strictEqual(actual.continuationToken, "4qmFsgKeAhIkVkxQTHI5UlJGTWV1R0JSLW5ZdVU2aHNWX1FLVHZPdXFfZFB4GtABZW80QlVGUTZRMGRSYVVWRWJFZFBWR3MxVWxWUmQwMHdUVE5PYTA1RlRWUlJiMEZWYVhsdWIwZDZlSEZwVEVFeFFVSlhhMVZwVVRKc1MxVldVa2xUVkZaV1lrVndTRlpHWkZkTlZrbDNVMnhPVFZaNlZtRmFSbHBXVFcxR1NWUnNaRmxOVlZwTlZtdG9ZVlZIVWxsU2JWcGhVbXRKTUZKWFpETlRWRXAyVmpCYU1sVldiRkpOUlhNelVtMDVibFJUU1pJQkF3aTZCQSUzRCUzRJoCIlBMcjlSUkZNZXVHQlItbll1VTZoc1ZfUUtUdk91cV9kUHg%3D");
             assert.strictEqual(actual.description, "Test Description");
             assert.strictEqual(actual.tracks?.length, 100);
         });
@@ -74,8 +74,8 @@ describe("PlaylistParser", () => {
             const actual = target.parsePlaylistDetailContinuation(playlist, response);
 
             // Assert
-            assert.strictEqual(playlist.continuationToken, "4qmFsgL3ARIkVkxQTHI5UlJGTWV1R0JRWU10b1Z0bmwyOGczd0czbTdOM3RpGs4BZW84QlVGUTZRMDFuUWtsb1FUTlBSVkV4VDFSck5FOUVWVEpPTUVVMVVsVlpla3RCUmtsdWNYRjBiRWxtYldoblRsRkJWbkJHU1d0T2NGTnNSbFZUUldzeFZsZDRTMUl4VWxoV2FrWlRUVVZ3VTFZeFZYaE5SMGw0VjJwQ2FXSllaRFZVTUdScVpXMVJkMWt6Y0dsV1IxSlFWRlJPVTJORlZtNWtNR3g2WkZST1NXTXpaRnBWV0U1TFV6SmtNRkZWVldtU0FRTUl1Z1ElM0Q%3D");
-            assert.strictEqual(playlist.tracks?.length, 100);
+            assert.strictEqual(playlist.continuationToken, "4qmFsgKeAhIkVkxQTHI5UlJGTWV1R0JRanJwWDI5U01MQmtKaHB3dDhGVTJVGtABZW80QlVGUTZRMDFuUWtsb1FUQk9NRlpEVFhwamVGRlVSWGxTUlZVeFRrUk9SRXRCUmtsNVltRmpORFp4TUdsblRsRkJWbkJGU1d0T2NGTnNSbFZUUldzeFZsZDRTMUl4VWxoV2FrWlRUVVZ3VTFsWE5VdGtNV1JGVTFSV1ZrMUVSazVWVnpFd1V6SkdTVkZxVG10U1IyaElWbXhTUzFaclZtNWpNR3gyWTFjeFUyUllaRnBWV0VaS1V6SktVMUZUU1pJQkF3aTZCQSUzRCUzRJoCIlBMcjlSUkZNZXVHQlFqcnBYMjlTTUxCa0pocHd0OEZVMlU%3D");
+            assert.strictEqual(playlist.tracks?.length, 98);
         });
     });
 });
