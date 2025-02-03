@@ -51,9 +51,10 @@ export default class PlaylistParser extends BaseParser {
     }
 
     parsePlaylistDetailResponse(response: any): IInternalPlaylistDetail {
-        const playlistObj = this.traverse(response, "contents", "twoColumnBrowseResultsRenderer", "secondaryContents", "sectionListRenderer", "contents", "0", "musicPlaylistShelfRenderer");
+        const sectionObj = this.traverse(response, "contents", "twoColumnBrowseResultsRenderer", "secondaryContents", "sectionListRenderer");
+        const playlistObj = this.traverse(sectionObj, "contents", "0", "musicPlaylistShelfRenderer");
         if (playlistObj) {
-            return this.parsePlaylistDetail(response, playlistObj);
+            return this.parsePlaylistDetail(response, sectionObj, playlistObj);
         }
         return undefined;
     }
@@ -67,7 +68,7 @@ export default class PlaylistParser extends BaseParser {
         playlist.continuationToken = this.traverse(response, "continuationContents", "musicPlaylistShelfContinuation", "continuations", "0", "nextContinuationData", "continuation");
     }
 
-    parsePlaylistDetail(rootPlaylistObj: any, childPlaylistObj: any): IInternalPlaylistDetail {
+    parsePlaylistDetail(rootPlaylistObj: any, sectionPlaylistObj: any, childPlaylistObj: any): IInternalPlaylistDetail {
         const privateHeader = this.traverse(rootPlaylistObj, "contents", "twoColumnBrowseResultsRenderer", "tabs", "0", "tabRenderer", "content", "sectionListRenderer", "contents", "0", "musicEditablePlaylistDetailHeaderRenderer");
         const isPublic = typeof privateHeader === "undefined";
         const playlistHeader = isPublic ?
@@ -81,7 +82,7 @@ export default class PlaylistParser extends BaseParser {
         if (Array.isArray(countRuns)) {
             for (const countRun of countRuns) {
                 const countStr = this.traverse(countRun, "text");
-                if (countStr && countStr.includes("track")) {
+                if (countStr && (countStr.includes("track") || countStr.includes("song"))) {
                     const countParts = countStr.split(" ");
                     if (countParts && countParts.length > 0) {
                         count = parseInt(countParts[0]);
@@ -108,7 +109,7 @@ export default class PlaylistParser extends BaseParser {
             privacy: privacy,
             count: count,
             tracks: this.trackParser.parseTrackDetails(trackObjs),
-            continuationToken: this.traverse(childPlaylistObj, "continuations", "0", "nextContinuationData", "continuation")
+            continuationToken: this.traverse(sectionPlaylistObj, "continuations", "0", "nextContinuationData", "continuation")
         };
     }
 
