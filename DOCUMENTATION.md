@@ -125,7 +125,7 @@ A promise that will yield whether or not the operation was successful.
 
 ### createPlaylist()
 
-> **createPlaylist**(`name`, `description`?, `privacy`?, `sourcePlaylistId`?): `Promise`\<[`IPlaylistSummary`](#interfaces-supplementaryinterfacesiplaylistsummarymd)\>
+> **createPlaylist**(`name`, `description?`, `privacy?`, `sourcePlaylistId?`): `Promise`\<[`IPlaylistSummary`](#interfaces-supplementaryinterfacesiplaylistsummarymd)\>
 
 Defined in: [interfaces-primary.ts:48](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L48)
 
@@ -299,7 +299,7 @@ A promise that will yield an array of all the tracks in the user's library.
 
 ### getPlaylist()
 
-> **getPlaylist**(`id`, `maxRetries`?): `Promise`\<[`IPlaylistDetail`](#interfaces-supplementaryinterfacesiplaylistdetailmd)\>
+> **getPlaylist**(`id`, `maxRetries?`): `Promise`\<[`IPlaylistDetail`](#interfaces-supplementaryinterfacesiplaylistdetailmd)\>
 
 Defined in: [interfaces-primary.ts:145](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L145)
 
@@ -337,7 +337,7 @@ A promise that will yield the detailed information for a specific playlist.
 
 ### moveTrackWithinPlaylist()
 
-> **moveTrackWithinPlaylist**(`playlistId`, `trackToMove`, `trackToMoveBefore`?): `Promise`\<`boolean`\>
+> **moveTrackWithinPlaylist**(`playlistId`, `trackToMove`, `trackToMoveBefore?`): `Promise`\<`boolean`\>
 
 Defined in: [interfaces-primary.ts:101](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L101)
 
@@ -474,7 +474,7 @@ A promise that will yield the detailed information for a specific album.
 
 ### getPlaylist()
 
-> **getPlaylist**(`id`, `maxRetries`?): `Promise`\<[`IPlaylistDetail`](#interfaces-supplementaryinterfacesiplaylistdetailmd)\>
+> **getPlaylist**(`id`, `maxRetries?`): `Promise`\<[`IPlaylistDetail`](#interfaces-supplementaryinterfacesiplaylistdetailmd)\>
 
 Defined in: [interfaces-primary.ts:145](https://github.com/nickp10/youtube-music-ts-api/blob/master/src/interfaces-primary.ts#L145)
 
